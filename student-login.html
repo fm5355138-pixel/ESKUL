@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Login Siswa</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="auth-page">
+  <main class="login-wrap">
+    <section class="login-card">
+      <div class="login-brand">
+        <div class="brand-header">
+          <div class="school-logo" aria-label="Logo SMK Taruna Bangsa">
+            <img src="logo-taruna-bangsa.svg" alt="Logo SMK Taruna Bangsa" />
+          </div>
+          <div class="brand-lockup">
+            <span class="brand-kicker">SMK</span>
+            <h1>TARUNA BANGSA</h1>
+          </div>
+        </div>
+        <p class="muted">Disiplin | Terampil | Berakhlak Mulia</p>
+      </div>
+
+      <form id="student-login" class="login-form">
+        <div id="error-box" class="error-box" role="alert" style="display:none"></div>
+
+        <div class="form-group">
+          <input id="nis" name="nis" required class="form-input" autocomplete="username" />
+          <label for="nis" class="form-label">NIS</label>
+        </div>
+
+        <div class="form-group">
+          <input id="student-password" name="password" type="password" required class="form-input" autocomplete="current-password" />
+          <label for="student-password" class="form-label">Password</label>
+        </div>
+
+        <div class="form-actions">
+          <label class="checkbox"><input type="checkbox" id="show-student-pw"> Tampilkan password</label>
+          <label class="remember"><input type="checkbox" id="remember-student"> Ingat saya</label>
+        </div>
+
+        <button class="btn btn-primary full-width" id="student-submit" type="submit">Masuk ke Portal</button>
+
+        <div class="login-links">
+          <a href="index.html" class="link-btn secondary-link">← Kembali ke Beranda</a>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <script>
+    // Demo student database (stored in localStorage under 'students')
+    (function(){
+      try{
+        if(!localStorage.getItem('students')){
+          const demo = [{
+            nis: '12345',
+            name: 'Siswa Demo',
+            kelas: 'XII RPL 1',
+            email: 'demo@smktarunabangsa.sch.id',
+            password: 'password'
+          }];
+          localStorage.setItem('students', JSON.stringify(demo));
+        }
+      }catch(e){ console.error(e) }
+    })();
+
+    function showError(msg){
+      const box = document.getElementById('error-box');
+      box.textContent = msg; box.style.display = 'block';
+      setTimeout(()=>{ box.style.display = 'none'; }, 5000);
+    }
+
+    document.getElementById('student-login').addEventListener('submit', function(e){
+      e.preventDefault();
+      const nis = document.getElementById('nis').value.trim();
+      const pw = document.getElementById('student-password').value;
+      if(!nis || !pw) return showError('NIS dan password wajib diisi.');
+
+      let students = [];
+      try{ students = JSON.parse(localStorage.getItem('students'))||[] }catch(e){ students = [] }
+      const user = students.find(s=>String(s.nis)===String(nis) && s.password===pw);
+      if(!user) return showError('NIS atau password salah. Gunakan NIS 12345 / password untuk demo.');
+
+      const userPayload = {
+        nis: user.nis,
+        name: user.name,
+        kelas: user.kelas || 'Belum terdaftar',
+        email: user.email || ''
+      };
+
+      // success
+      const remember = document.getElementById('remember-student').checked;
+      if(remember) localStorage.setItem('loggedInStudent', JSON.stringify(userPayload));
+      else sessionStorage.setItem('loggedInStudent', JSON.stringify(userPayload));
+
+      // redirect to dashboard
+      window.location.href = 'dashboard.html';
+    });
+
+    if (sessionStorage.getItem('loggedInStudent') || localStorage.getItem('loggedInStudent')) {
+      window.location.href = 'dashboard.html';
+    }
+
+    // show password toggle
+    document.getElementById('show-student-pw').addEventListener('change', function(e){
+      const pw = document.getElementById('student-password');
+      pw.type = this.checked ? 'text' : 'password';
+    });
+
+    // Floating label behavior
+    document.querySelectorAll('.form-input').forEach(input => {
+      input.addEventListener('focus', () => input.parentElement.classList.add('focus'));
+      input.addEventListener('blur', () => { if(!input.value) input.parentElement.classList.remove('focus'); });
+      if(input.value) input.parentElement.classList.add('focus');
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Detail Ekskul</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="detail-page landing-page">
+  <header class="site-header detail-header">
+    <div class="container header-container">
+      <button class="nav-toggle-left debug" aria-label="Buka menu">☰</button>
+      <div class="brand">
+        <img class="brand-logo" src="logo-saya.png" alt="Logo SMK Taruna Bangsa" />
+      </div>
+      <div class="header-right">
+        <nav class="main-nav">
+          <a href="index.html" class="nav-link">Home</a>
+          <div class="nav-dropdown">
+            <button class="nav-link nav-dropdown-toggle" type="button" aria-expanded="false">Daftar Ekskul</button>
+            <div class="nav-dropdown-menu" aria-label="Daftar ekskul">
+              <a class="dropdown-ekskul-link futsal-link" href="ekskul-detail.html?name=Futsal">Futsal</a>
+              <a class="dropdown-ekskul-link basket-link" href="ekskul-detail.html?name=Basket">Basket</a>
+              <a class="dropdown-ekskul-link volley-link" href="ekskul-detail.html?name=Volley">Volley</a>
+              <a class="dropdown-ekskul-link paskibra-link" href="ekskul-detail.html?name=Paskibra">Paskibra</a>
+              <a class="dropdown-ekskul-link silat-link" href="ekskul-detail.html?name=Pencak%20Silat">Pencak Silat</a>
+              <a class="dropdown-ekskul-link musik-link" href="ekskul-detail.html?name=Musik">Musik</a>
+              <a class="dropdown-ekskul-link esport-link" href="ekskul-detail.html?name=Esport%20Nasa">Esport Nasa</a>
+              <a class="dropdown-ekskul-link polsis-link" href="ekskul-detail.html?name=Polsis">Polsis</a>
+            </div>
+          </div>
+          <a href="pembina.html" class="nav-link">Pembina</a>
+          <a href="prestasi.html" class="nav-link">Prestasi</a>
+          <a href="jadwal.html" class="nav-link">Jadwal</a>
+          <a href="informasi.html" class="nav-link">Informasi</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <div id="left-panel" class="left-panel" aria-hidden="true">
+    <div class="panel-inner">
+      <button class="close-btn" aria-label="Tutup">✕</button>
+      <nav class="mobile-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <div class="mobile-nav-dropdown">
+          <button class="nav-link nav-dropdown-toggle" type="button" aria-expanded="false">Daftar Ekskul</button>
+          <div class="mobile-dropdown-menu">
+            <a class="dropdown-ekskul-link futsal-link" href="ekskul-detail.html?name=Futsal">Futsal</a>
+            <a class="dropdown-ekskul-link basket-link" href="ekskul-detail.html?name=Basket">Basket</a>
+            <a class="dropdown-ekskul-link volley-link" href="ekskul-detail.html?name=Volley">Volley</a>
+            <a class="dropdown-ekskul-link paskibra-link" href="ekskul-detail.html?name=Paskibra">Paskibra</a>
+            <a class="dropdown-ekskul-link silat-link" href="ekskul-detail.html?name=Pencak%20Silat">Pencak Silat</a>
+            <a class="dropdown-ekskul-link musik-link" href="ekskul-detail.html?name=Musik">Musik</a>
+            <a class="dropdown-ekskul-link esport-link" href="ekskul-detail.html?name=Esport%20Nasa">Esport Nasa</a>
+            <a class="dropdown-ekskul-link polsis-link" href="ekskul-detail.html?name=Polsis">Polsis</a>
+          </div>
+        </div>
+        <a href="pembina.html" class="nav-link">Pembina</a>
+        <a href="prestasi.html" class="nav-link">Prestasi</a>
+        <a href="jadwal.html" class="nav-link">Jadwal</a>
+        <a href="informasi.html" class="nav-link">Informasi</a>
+      </nav>
+    </div>
+  </div>
+
+  <main class="detail-main">
+    <div class="container detail-wrap">
+      <article class="detail-card" id="detail-card">
+        <div class="detail-hero">
+          <div id="detail-icon" class="detail-icon" aria-label="Ikon ekskul">✨</div>
+        </div>
+        <div id="detail-badge" class="detail-badge">Ekskul</div>
+        <h1 id="detail-name">Nama Ekskul</h1>
+        <p id="detail-desc" class="detail-desc">Deskripsi ekskul.</p>
+
+        <div class="detail-meta">
+          <div>
+            <span>Jadwal</span>
+            <strong id="detail-schedule">-</strong>
+          </div>
+          <div>
+            <span>Lokasi</span>
+            <strong id="detail-location">GOR SMK Taruna Bangsa</strong>
+          </div>
+          <div>
+            <span>Pembina</span>
+            <strong id="detail-coach">-</strong>
+          </div>
+        </div>
+
+        <div class="detail-actions">
+          <a href="index.html" class="btn btn-primary">Kembali</a>
+        </div>
+      </article>
+    </div>
+  </main>
+
+
+  <script src="script.js"></script>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const name = params.get('name') || 'Futsal';
+    const defaultList = [
+      { name: 'Futsal', desc: 'Ekskul olahraga yang mengajarkan teknik menggiring dan menendang bola, kerja sama tim, serta strategi pertandingan.', schedule: 'Senin | 15.30 - 17.30 WIB', coach: 'Budi Santoso', location: 'SMK Taruna Bangsa' },
+      { name: 'Basket', desc: 'Kegiatan olahraga untuk belajar dribbling, passing, shooting, dan cara bermain sebagai tim dengan sportif.', schedule: 'Selasa | 16.00 - 18.00 WIB', coach: 'Andi Rahman', location: 'SMK Taruna Bangsa' },
+      { name: 'Volley', desc: 'Latihan permainan bola voli mulai dari passing, servis, smash, hingga kerja sama tim dalam pertandingan.', schedule: 'Rabu | 15.45 - 17.45 WIB', coach: 'Siti Nurhaliza', location: 'SMK Taruna Bangsa' },
+      { name: 'Paskibra', desc: 'Kegiatan untuk melatih baris-berbaris, kedisiplinan, kekompakan, kepemimpinan, dan tata upacara.', schedule: 'Kamis | 14.30 - 16.00 WIB', coach: 'Rina Marlina', location: 'SMK Taruna Bangsa' },
+      { name: 'Pencak Silat', desc: 'Belajar seni bela diri untuk meningkatkan kekuatan, kelincahan, keberanian, dan sikap menghormati orang lain.', schedule: 'Jumat | 16.15 - 18.15 WIB', coach: 'Dika Pratama', location: 'SMK Taruna Bangsa' },
+      { name: 'Musik', desc: 'Tempat mengembangkan bakat bermusik melalui latihan alat musik, bernyanyi, membuat aransemen, dan pentas seni.', schedule: 'Sabtu | 08.00 - 10.00 WIB', coach: 'Nadya Aulia', location: 'SMK Taruna Bangsa' },
+      { name: 'Esport Nasa', desc: 'Kegiatan permainan digital yang melatih strategi, konsentrasi, komunikasi, dan kerja sama tim secara sportif.', schedule: 'Sabtu | 13.30 - 15.30 WIB', coach: 'Fajar Aditia', location: 'SMK Taruna Bangsa' },
+      { name: 'Polsis', desc: 'Kegiatan yang membentuk kedisiplinan, tanggung jawab, kepedulian, dan kesiapsiagaan dalam menjaga keamanan sekolah.', schedule: 'Jumat | 17.00 - 18.30 WIB', coach: 'Raka Firmansyah', location: 'SMK Taruna Bangsa' }
+    ];
+
+    const data = (() => {
+      try {
+        const stored = JSON.parse(localStorage.getItem('ex_ekskul') || '[]');
+        const fallback = defaultList.find((item) => item.name === name) || defaultList[0];
+        const saved = stored.find((item) => item.name === name);
+        return saved ? { ...fallback, ...saved, desc: fallback.desc, location: 'SMK Taruna Bangsa', schedule: saved.schedule || fallback.schedule } : fallback;
+      } catch (error) {
+        return defaultList.find((item) => item.name === name) || defaultList[0];
+      }
+    })();
+
+    const iconMap = {
+      Futsal: '⚽',
+      Basket: '🏀',
+      Volley: '🏐',
+      Paskibra: '🎖️',
+      'Pencak Silat': '🥋',
+      Musik: '🎵',
+      'Esport Nasa': '🎮',
+      Polis: '🛡️',
+      Polsis: '🛡️'
+    };
+    const accentMap = {
+      Futsal: '#10b981',
+      Basket: '#3b82f6',
+      Volley: '#8b5cf6',
+      Paskibra: '#f59e0b',
+      'Pencak Silat': '#ef4444',
+      Musik: '#14b8a6',
+      'Esport Nasa': '#6366f1',
+      Polsis: '#22c55e'
+    };
+
+    const accent = accentMap[data.name] || '#10b981';
+    document.getElementById('detail-name').textContent = data.name;
+    document.getElementById('detail-desc').textContent = data.desc || 'Ekskul ini menjadi wadah untuk mengembangkan bakat dan semangat kompetisi siswa.';
+    document.getElementById('detail-schedule').textContent = data.schedule || 'Jadwal menyesuaikan pembina';
+    document.getElementById('detail-location').textContent = data.location || 'Lokasi sesuai jadwal latihan';
+    document.getElementById('detail-coach').textContent = data.coach || 'Pembina berkompeten';
+    document.getElementById('detail-badge').textContent = data.name;
+    document.getElementById('detail-icon').textContent = iconMap[data.name] || '✨';
+    document.getElementById('detail-card').style.setProperty('--detail-accent', accent);
+  </script>
+</body>
+</html>

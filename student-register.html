@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Daftar Siswa</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="auth-page">
+  <main class="login-wrap">
+    <section class="login-card register-card">
+      <div class="login-brand">
+        <div class="brand-header">
+          <div class="school-logo" aria-label="Logo SMK Taruna Bangsa">
+            <img src="logo-register.jpg" alt="Logo pendaftaran ekstrakurikuler" />
+          </div>
+          <div class="brand-lockup">
+            <span class="brand-kicker">SMK</span>
+            <h1>TARUNA BANGSA</h1>
+          </div>
+        </div>
+        <p class="muted">Pendaftaran Siswa Baru</p>
+      </div>
+
+      <form id="student-register" class="login-form register-form">
+        <div id="register-error" class="error-box" role="alert" style="display:none"></div>
+
+        <div class="form-group">
+          <input id="register-name" name="name" required class="form-input" autocomplete="name" />
+          <label for="register-name" class="form-label">Nama Lengkap</label>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <input id="register-nis" name="nis" required class="form-input" autocomplete="username" />
+            <label for="register-nis" class="form-label">NIS</label>
+          </div>
+
+          <div class="form-group">
+            <select id="register-kelas" name="kelas" required class="form-input select-input">
+              <option value="" selected disabled></option>
+              <option value="X AKL 1">X AKL 1</option>
+              <option value="X AKL 2">X AKL 2</option>
+              <option value="XI AKL 1">XI AKL 1</option>
+              <option value="XI AKL 2">XI AKL 2</option>
+              <option value="XII AKL 1">XII AKL 1</option>
+              <option value="XII AKL 2">XII AKL 2</option>
+              <option value="X RPL 1">X RPL 1</option>
+              <option value="X RPL 2">X RPL 2</option>
+              <option value="XI RPL 1">XI RPL 1</option>
+              <option value="XI RPL 2">XI RPL 2</option>
+              <option value="XII RPL 1">XII RPL 1</option>
+              <option value="XII RPL 2">XII RPL 2</option>
+            </select>
+            <label for="register-kelas" class="form-label">Kelas</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <input id="register-email" name="email" type="email" required class="form-input" autocomplete="email" />
+          <label for="register-email" class="form-label">Email</label>
+        </div>
+
+        <div class="form-group">
+          <input id="register-password" name="password" type="password" required class="form-input" autocomplete="new-password" />
+          <label for="register-password" class="form-label">Password</label>
+        </div>
+
+        <label class="checkbox register-check">
+          <input type="checkbox" id="register-agree" required>
+          Saya menyetujui syarat dan ketentuan pendaftaran.
+        </label>
+
+        <button class="btn btn-primary full-width" type="submit">Daftar Sekarang</button>
+
+        <div class="login-links">
+          <a href="student-login.html" class="link-btn secondary-link">← Sudah punya akun</a>
+          <a href="index.html" class="link-btn primary-link">Ke Beranda</a>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <script>
+    document.getElementById('student-register').addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      const name = document.getElementById('register-name').value.trim();
+      const nis = document.getElementById('register-nis').value.trim();
+      const kelas = document.getElementById('register-kelas').value;
+      const email = document.getElementById('register-email').value.trim();
+      const password = document.getElementById('register-password').value;
+      const agree = document.getElementById('register-agree').checked;
+      const errorBox = document.getElementById('register-error');
+
+      if (!name || !nis || !kelas || !email || !password) {
+        errorBox.textContent = 'Semua field wajib diisi.';
+        errorBox.style.display = 'block';
+        return;
+      }
+
+      if (!agree) {
+        errorBox.textContent = 'Anda harus menyetujui syarat dan ketentuan.';
+        errorBox.style.display = 'block';
+        return;
+      }
+
+      try {
+        const existing = JSON.parse(localStorage.getItem('students') || '[]');
+        const isDuplicate = existing.some((student) => String(student.nis) === String(nis));
+
+        if (isDuplicate) {
+          errorBox.textContent = 'NIS sudah terdaftar. Silakan gunakan NIS lain.';
+          errorBox.style.display = 'block';
+          return;
+        }
+
+        const newStudent = {
+          nis,
+          name,
+          kelas,
+          email,
+          password,
+          statusPendaftar: 'Menunggu Verifikasi'
+        };
+
+        existing.push(newStudent);
+
+        localStorage.setItem('students', JSON.stringify(existing));
+        sessionStorage.setItem('loggedInStudent', JSON.stringify({
+          nis: newStudent.nis,
+          name: newStudent.name,
+          kelas: newStudent.kelas,
+          email: newStudent.email
+        }));
+        window.location.href = 'dashboard.html';
+      } catch (error) {
+        errorBox.textContent = 'Terjadi kesalahan saat mendaftar. Coba lagi.';
+        errorBox.style.display = 'block';
+      }
+    });
+
+    document.querySelectorAll('.form-input').forEach((input) => {
+      input.addEventListener('focus', () => input.parentElement.classList.add('focus'));
+      input.addEventListener('blur', () => {
+        if (!input.value) input.parentElement.classList.remove('focus');
+      });
+      if (input.value) input.parentElement.classList.add('focus');
+    });
+  </script>
+</body>
+</html>

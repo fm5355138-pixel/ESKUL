@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Login Admin</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="auth-page">
+  <main class="login-wrap">
+    <section class="login-card">
+      <div class="login-brand">
+        <div class="brand-badge">Admin</div>
+        <h1>Panel Admin</h1>
+        <p class="muted">Akses halaman kontrol - masukkan kredensial Anda</p>
+      </div>
+
+      <form id="admin-login" class="login-form" onsubmit="return handleSubmitAdmin(event)">
+        <div class="form-group">
+          <input id="username" name="username" required class="form-input" autocomplete="username" />
+          <label for="username" class="form-label">Username</label>
+        </div>
+
+        <div class="form-group">
+          <input id="admin-password" name="password" type="password" required class="form-input" autocomplete="current-password" />
+          <label for="admin-password" class="form-label">Password</label>
+        </div>
+
+        <div class="form-actions">
+          <label class="checkbox"><input type="checkbox" id="show-admin-pw"> Tampilkan password</label>
+          <button class="btn btn-primary" type="submit">Masuk</button>
+        </div>
+
+        <p class="foot"><a href="index.html">Kembali ke Beranda</a></p>
+      </form>
+    </section>
+  </main>
+
+  <script>
+    function handleSubmitAdmin(e){
+      e.preventDefault();
+      const user = document.getElementById('username').value.trim();
+      const password = document.getElementById('admin-password').value;
+      if(!user){
+        alert('Masukkan username.');
+        return false;
+      }
+
+      const adminUser = {
+        username: 'admin',
+        password: 'admin123',
+        name: 'Admin SMK Taruna Bangsa'
+      };
+
+      if (user === adminUser.username && password === adminUser.password) {
+        const payload = { username: adminUser.username, name: adminUser.name };
+        sessionStorage.setItem('loggedInAdmin', JSON.stringify(payload));
+        window.location.href = 'admin-dashboard.html';
+        return false;
+      }
+
+      alert('Username atau password admin salah. Gunakan admin / admin123');
+      return false;
+    }
+
+    document.getElementById('show-admin-pw').addEventListener('change', function(e){
+      const pw = document.getElementById('admin-password');
+      pw.type = this.checked ? 'text' : 'password';
+    });
+
+    // Floating label behavior
+    document.querySelectorAll('.form-input').forEach(input => {
+      input.addEventListener('focus', () => input.parentElement.classList.add('focus'));
+      input.addEventListener('blur', () => {
+        if(!input.value) input.parentElement.classList.remove('focus');
+      });
+      if(input.value) input.parentElement.classList.add('focus');
+    });
+  </script>
+</body>
+</html>

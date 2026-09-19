@@ -1,0 +1,550 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dashboard Siswa</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="dashboard-page">
+  <header class="dashboard-header">
+    <div class="container dashboard-topbar">
+      <div class="brand brand-dashboard">
+        <span class="brand-badge">SMK Taruna Bangsa</span>
+        <div>
+          <span class="brand-kicker">Student Portal</span>
+          <h1>Dashboard Siswa</h1>
+        </div>
+      </div>
+
+      <div class="dashboard-actions">
+        <div class="notification-wrap">
+          <button class="notification-trigger" id="notification-trigger" type="button" aria-label="Buka notifikasi">
+            <span aria-hidden="true">🔔</span>
+            <span class="notification-count" id="notification-count">0</span>
+          </button>
+          <div class="notification-panel hidden" id="notification-panel">
+            <div class="notification-header">
+              <strong>Notifikasi</strong>
+              <button class="clear-notif" id="clear-notif" type="button">Bersihkan</button>
+            </div>
+            <div id="notification-list" class="notification-list"></div>
+          </div>
+        </div>
+
+        <div class="user-status user-status-large">
+          <span class="user-chip" id="dashboard-user-name">Halo, Siswa</span>
+        </div>
+        <button class="logout-btn" id="dashboard-logout" type="button">Keluar</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="dashboard-main">
+    <div class="container dashboard-grid">
+      <aside class="sidebar-card">
+        <div class="sidebar-brand">
+          <div class="school-logo small-logo" aria-label="Logo SMK Taruna Bangsa">
+            <img src="logo-taruna-bangsa.svg" alt="Logo SMK Taruna Bangsa" />
+          </div>
+          <div>
+            <p>SMK</p>
+            <strong>TARUNA BANGSA</strong>
+          </div>
+        </div>
+
+        <nav class="dashboard-nav">
+          <a href="#overview" class="active">Overview</a>
+          <a href="#ekskul-portal">Ekskul</a>
+          <a href="jadwal.html">Jadwal</a>
+          <a href="prestasi.html">Prestasi</a>
+          <a href="pembina.html">Pembina</a>
+        </nav>
+      </aside>
+
+      <section class="dashboard-content">
+        <div class="welcome-card" id="overview">
+          <div>
+            <span class="sub-title">Selamat datang</span>
+            <h2 id="welcome-name">Siswa</h2>
+          </div>
+          <div class="quick-actions">
+            <a href="jadwal.html" class="btn btn-primary">Lihat Jadwal</a>
+            <a href="index.html" class="btn btn-secondary">Kembali ke Beranda</a>
+          </div>
+        </div>
+
+        <div class="feature-row">
+          <div class="feature-badge success">3 notifikasi baru</div>
+          <div class="feature-badge neutral">Kehadiran minggu ini 92%</div>
+          <div class="feature-badge accent">Ekskul siap ditindaklanjuti</div>
+        </div>
+
+        <div class="stats-grid">
+          <article class="stat-box highlight">
+            <span class="stat-label">Kelas</span>
+            <strong id="dash-kelas">-</strong>
+          </article>
+          <article class="stat-box">
+            <span class="stat-label">NIS</span>
+            <strong id="dash-nis">-</strong>
+          </article>
+          <article class="stat-box">
+            <span class="stat-label">Ekskul Favorit</span>
+            <strong id="dash-favorit">Futsal</strong>
+          </article>
+        </div>
+
+        <div class="panel-grid">
+          <article class="info-panel glass-panel timeline-panel">
+            <div class="panel-head">
+              <h3>Aktivitas Terbaru</h3>
+              <span class="pill">Live</span>
+            </div>
+            <ul class="timeline-list">
+              <li>
+                <span class="timeline-dot green"></span>
+                <div>
+                  <strong>Latihan Futsal</strong>
+                  <p>Selasa & Kamis, 15.00 WIB</p>
+                </div>
+              </li>
+              <li>
+                <span class="timeline-dot blue"></span>
+                <div>
+                  <strong>Persiapan lomba</strong>
+                  <p>Pencak silat nasional sedang berjalan</p>
+                </div>
+              </li>
+              <li>
+                <span class="timeline-dot orange"></span>
+                <div>
+                  <strong>Absensi dibuka</strong>
+                  <p>Hingga akhir minggu</p>
+                </div>
+              </li>
+            </ul>
+          </article>
+
+          <article class="info-panel glass-panel progress-panel">
+            <div class="panel-head">
+              <h3>Progress Aktivitas</h3>
+              <span class="pill subtle">Update</span>
+            </div>
+            <div class="progress-stack">
+              <div class="progress-row">
+                <label>Profil siswa</label>
+                <strong>85%</strong>
+              </div>
+              <div class="progress-bar"><span style="width: 85%"></span></div>
+
+              <div class="progress-row">
+                <label>Kehadiran</label>
+                <strong>92%</strong>
+              </div>
+              <div class="progress-bar"><span style="width: 92%"></span></div>
+            </div>
+          </article>
+        </div>
+
+        <div class="panel-grid">
+          <article class="info-panel glass-panel quick-actions-panel">
+            <div class="panel-head">
+              <h3>Quick Actions</h3>
+              <span class="pill subtle">Akses cepat</span>
+            </div>
+            <div class="quick-chip-grid">
+              <a href="jadwal.html" class="quick-action-item">
+                <span class="quick-icon">📅</span>
+                <strong>Jadwal</strong>
+              </a>
+              <a href="prestasi.html" class="quick-action-item">
+                <span class="quick-icon">🏆</span>
+                <strong>Prestasi</strong>
+              </a>
+              <a href="pembina.html" class="quick-action-item">
+                <span class="quick-icon">👨‍🏫</span>
+                <strong>Pembina</strong>
+              </a>
+              <a href="#ekskul-portal" class="quick-action-item">
+                <span class="quick-icon">🎯</span>
+                <strong>Ekskul</strong>
+              </a>
+            </div>
+          </article>
+
+          <article class="info-panel glass-panel notifications-panel">
+            <div class="panel-head">
+              <h3>Notifikasi</h3>
+              <span class="pill">3 baru</span>
+            </div>
+            <ul class="notif-list">
+              <li>
+                <span class="notif-dot green"></span>
+                <div>
+                  <strong>Presensi masuk dibuka</strong>
+                  <p>Silakan cek status kehadiran hari ini.</p>
+                </div>
+              </li>
+              <li>
+                <span class="notif-dot blue"></span>
+                <div>
+                  <strong>Latihan ekskul dimulai</strong>
+                  <p>Futsal hadir pukul 15.00 WIB.</p>
+                </div>
+              </li>
+              <li>
+                <span class="notif-dot orange"></span>
+                <div>
+                  <strong>Pengumuman lomba</strong>
+                  <p>Pencak silat nasional antar pelajar.</p>
+                </div>
+              </li>
+            </ul>
+          </article>
+        </div>
+
+        <article class="info-panel glass-panel profile-panel">
+          <div class="panel-head">
+            <h3>Profil Siswa</h3>
+          </div>
+          <ul class="profile-list">
+            <li><span>Nama</span><strong id="profile-name">-</strong></li>
+            <li><span>Email</span><strong id="profile-email">-</strong></li>
+            <li><span>Kelas</span><strong id="profile-kelas">-</strong></li>
+            <li><span>Status Pendaftar</span><strong id="profile-status">Menunggu Verifikasi</strong></li>
+          </ul>
+        </article>
+
+        <section id="ekskul-portal" class="detail-panel glass-panel">
+          <div class="panel-head">
+            <h3>Ekskul Pilihan</h3>
+            <span class="pill subtle">8 Program</span>
+          </div>
+          <div class="search-box-wrap">
+            <input id="student-search" type="search" placeholder="Cari ekskul atau kegiatan..." aria-label="Cari ekskul" />
+          </div>
+          <div id="student-ekskul-grid" class="student-ekskul-grid"></div>
+        </section>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    const defaultNotifications = [
+      {
+        id: 'notif-1',
+        title: 'Presensi masuk dibuka',
+        message: 'Silakan cek status kehadiran hari ini.',
+        time: 'Baru saja',
+        read: false,
+        tone: 'success'
+      },
+      {
+        id: 'notif-2',
+        title: 'Latihan ekskul dimulai',
+        message: 'Futsal hadir pukul 15.00 WIB.',
+        time: '10 menit lalu',
+        read: false,
+        tone: 'info'
+      },
+      {
+        id: 'notif-3',
+        title: 'Pengumuman lomba',
+        message: 'Pencak silat nasional antar pelajar.',
+        time: '1 jam lalu',
+        read: true,
+        tone: 'warning'
+      }
+    ];
+
+    function getCurrentStudent() {
+      try {
+        const sessionUser = sessionStorage.getItem('loggedInStudent');
+        if (sessionUser) return JSON.parse(sessionUser);
+        const localUser = localStorage.getItem('loggedInStudent');
+        return localUser ? JSON.parse(localUser) : null;
+      } catch (error) {
+        return null;
+      }
+    }
+
+    function getNotifications() {
+      try {
+        const stored = JSON.parse(localStorage.getItem('student_notifications') || 'null');
+        if (Array.isArray(stored) && stored.length) return stored;
+        localStorage.setItem('student_notifications', JSON.stringify(defaultNotifications));
+        return defaultNotifications;
+      } catch (error) {
+        return defaultNotifications;
+      }
+    }
+
+    function saveNotifications(list) {
+      localStorage.setItem('student_notifications', JSON.stringify(list));
+    }
+
+    function renderNotifications() {
+      const listEl = document.getElementById('notification-list');
+      const countEl = document.getElementById('notification-count');
+      if (!listEl || !countEl) return;
+
+      const notifications = getNotifications();
+      const unreadCount = notifications.filter((item) => !item.read).length;
+      countEl.textContent = unreadCount;
+      countEl.style.display = unreadCount > 0 ? 'inline-flex' : 'none';
+
+      listEl.innerHTML = notifications.map((item) => `
+        <div class="notification-item ${item.read ? 'read' : 'unread'}" data-id="${item.id}">
+          <div class="notification-indicator ${item.tone || 'info'}"></div>
+          <div class="notification-copy">
+            <strong>${item.title}</strong>
+            <p>${item.message}</p>
+            <span>${item.time}</span>
+          </div>
+          <button class="notification-dismiss" type="button" data-id="${item.id}" aria-label="Hapus notifikasi">×</button>
+        </div>
+      `).join('');
+    }
+
+    function addNotification({ title, message, tone = 'info', time = 'Baru saja' }) {
+      const notifications = getNotifications();
+      notifications.unshift({
+        id: `notif-${Date.now()}`,
+        title,
+        message,
+        time,
+        read: false,
+        tone
+      });
+      saveNotifications(notifications.slice(0, 6));
+      renderNotifications();
+      showToast(title, message, tone);
+    }
+
+    function showToast(title, message, tone = 'info') {
+      const existing = document.querySelector('.toast');
+      if (existing) existing.remove();
+
+      const toast = document.createElement('div');
+      toast.className = `toast ${tone}`;
+      toast.innerHTML = `
+        <div class="toast-icon">${tone === 'success' ? '✓' : tone === 'warning' ? '!' : 'i'}</div>
+        <div>
+          <strong>${title}</strong>
+          <p>${message}</p>
+        </div>
+      `;
+      document.body.appendChild(toast);
+      setTimeout(() => toast.classList.add('show'), 50);
+      setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => toast.remove(), 300);
+      }, 2600);
+    }
+
+    function markAllAsRead() {
+      const notifications = getNotifications().map((item) => ({ ...item, read: true }));
+      saveNotifications(notifications);
+      renderNotifications();
+    }
+
+    function getEkskulList() {
+      try {
+        const stored = JSON.parse(localStorage.getItem('ex_ekskul') || '[]');
+        const list = (stored.length ? stored : [
+          { name: 'Futsal', desc: 'Latihan teknik, taktik, dan kebugaran untuk pertandingan antar sekolah.' },
+          { name: 'Basket', desc: 'Pengembangan skill dribbling, shooting, dan strategi tim.' },
+          { name: 'Volley', desc: 'Latihan passing, serve, dan kerja sama tim.' },
+          { name: 'Paskibra', desc: 'Pelatihan baris-berbaris, kedisiplinan, dan tata upacara.' },
+          { name: 'Pencak Silat', desc: 'Belajar teknik bertahan dan penyerangan tradisional.' },
+          { name: 'Musik', desc: 'Latihan instrumen, aransemen, dan pentas seni sekolah.' },
+          { name: 'Esport Nasa', desc: 'Kompetisi game dan strategi tim.' },
+          { name: 'Polsis', desc: 'Program keamanan sekolah dan latihan kesiapsiagaan.' }
+        ]).filter((item) => String(item.name || '').toLowerCase() !== 'robotika');
+
+        if (stored.length !== list.length) {
+          localStorage.setItem('ex_ekskul', JSON.stringify(list));
+        }
+        return list;
+      } catch (error) {
+        return [];
+      }
+    }
+
+    function renderEkskulCards() {
+      const grid = document.getElementById('student-ekskul-grid');
+      if (!grid) return;
+      const list = getEkskulList();
+      const countPill = document.querySelector('#ekskul-portal .pill.subtle');
+      if (countPill) {
+        countPill.textContent = `${list.length} Program`;
+      }
+      grid.innerHTML = list.map((item, index) => {
+        const iconMap = {
+          Futsal: '⚽',
+          Basket: '🏀',
+          Volley: '🏐',
+          Paskibra: '🎖️',
+          'Pencak Silat': '🥋',
+          Musik: '🎵',
+          'Esport Nasa': '🎮',
+          Polis: '🛡️',
+          Polsis: '🛡️'
+        };
+        const accent = [
+          'linear-gradient(135deg, #10b981, #0f766e)',
+          'linear-gradient(135deg, #3b82f6, #2563eb)',
+          'linear-gradient(135deg, #8b5cf6, #7c3aed)',
+          'linear-gradient(135deg, #f59e0b, #f97316)',
+          'linear-gradient(135deg, #ef4444, #dc2626)',
+          'linear-gradient(135deg, #14b8a6, #0f766e)',
+          'linear-gradient(135deg, #6366f1, #4f46e5)',
+          'linear-gradient(135deg, #22c55e, #16a34a)'
+        ][index % 8];
+        const icon = iconMap[item.name] || '✨';
+
+        return `
+          <article class="mini-ekskul-card reveal-card" style="--card-accent:${accent}">
+            <div class="mini-avatar" aria-label="Icon ${item.name}">${icon}</div>
+            <div class="mini-body">
+              <h4>${item.name}</h4>
+              <p>${item.desc}</p>
+            </div>
+            <a class="mini-link" href="ekskul-detail.html?name=${encodeURIComponent(item.name)}">Lihat detail</a>
+          </article>
+        `;
+      }).join('');
+
+      const cards = document.querySelectorAll('.reveal-card');
+      if (!cards.length) return;
+
+      if (!('IntersectionObserver' in window)) {
+        cards.forEach((card) => card.classList.add('visible'));
+        return;
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      cards.forEach((card) => observer.observe(card));
+    }
+
+    const searchInput = document.getElementById('student-search');
+    if (searchInput) {
+      searchInput.addEventListener('input', function () {
+        const term = this.value.trim().toLowerCase();
+        const cards = document.querySelectorAll('.mini-ekskul-card');
+        cards.forEach((card) => {
+          const text = card.textContent.toLowerCase();
+          const match = !term || text.includes(term);
+          card.style.display = match ? 'flex' : 'none';
+        });
+      });
+    }
+
+    let student = getCurrentStudent();
+    if (!student) {
+      student = {
+        name: 'Siswa Tamu',
+        nis: '-',
+        kelas: 'Belum login',
+        email: '-',
+        statusPendaftar: 'Silakan login untuk mendaftar'
+      };
+    }
+
+    {
+      document.getElementById('dashboard-user-name').textContent = 'Halo, ' + (student.name || 'Siswa');
+      document.getElementById('welcome-name').textContent = student.name || 'Siswa';
+      document.getElementById('dash-kelas').textContent = student.kelas || 'Belum diisi';
+      document.getElementById('dash-nis').textContent = student.nis || '-';
+      document.getElementById('dash-favorit').textContent = 'Futsal';
+      document.getElementById('profile-name').textContent = student.name || '-';
+      document.getElementById('profile-email').textContent = student.email || '-';
+      document.getElementById('profile-kelas').textContent = student.kelas || '-';
+      document.getElementById('profile-status').textContent = student.statusPendaftar || 'Menunggu Verifikasi';
+      renderEkskulCards();
+    }
+
+    const trigger = document.getElementById('notification-trigger');
+    const panel = document.getElementById('notification-panel');
+    const clearBtn = document.getElementById('clear-notif');
+
+    function closeAllNotificationPanels() {
+      document.querySelectorAll('.notification-panel').forEach((otherPanel) => {
+        otherPanel.classList.add('hidden');
+      });
+    }
+
+    if (trigger && panel) {
+      trigger.addEventListener('click', (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+
+        const isOpen = !panel.classList.contains('hidden');
+        closeAllNotificationPanels();
+
+        if (!isOpen) {
+          panel.classList.remove('hidden');
+          trigger.setAttribute('aria-expanded', 'true');
+        } else {
+          trigger.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+
+    if (clearBtn) {
+      clearBtn.addEventListener('click', () => {
+        saveNotifications([]);
+        renderNotifications();
+      });
+    }
+
+    document.getElementById('notification-list')?.addEventListener('click', function (event) {
+      const dismissBtn = event.target.closest('.notification-dismiss');
+      if (!dismissBtn) {
+        const item = event.target.closest('.notification-item');
+        if (!item) return;
+        const notifications = getNotifications().map((entry) => entry.id === item.dataset.id ? { ...entry, read: true } : entry);
+        saveNotifications(notifications);
+        renderNotifications();
+        return;
+      }
+
+      const notifications = getNotifications().filter((entry) => entry.id !== dismissBtn.dataset.id);
+      saveNotifications(notifications);
+      renderNotifications();
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!panel) return;
+      const target = event.target;
+      const clickedInsidePanel = panel.contains(target);
+      const clickedTrigger = trigger && (trigger === target || trigger.contains(target));
+
+      if (!clickedInsidePanel && !clickedTrigger && !panel.classList.contains('hidden')) {
+        panel.classList.add('hidden');
+        if (trigger) trigger.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    renderNotifications();
+    addNotification({ title: 'Selamat datang', message: 'Portal siswa siap digunakan hari ini.', tone: 'success', time: 'Sekarang' });
+
+    document.getElementById('dashboard-logout').addEventListener('click', function () {
+      sessionStorage.removeItem('loggedInStudent');
+      localStorage.removeItem('loggedInStudent');
+      window.location.href = 'student-login.html';
+    });
+  </script>
+</body>
+</html>

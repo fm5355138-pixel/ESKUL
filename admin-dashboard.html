@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dashboard Admin</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="dashboard-page admin-dashboard-page">
+  <header class="dashboard-header admin-header">
+    <div class="container dashboard-topbar">
+      <div class="brand brand-dashboard">
+        <span class="brand-badge">SMK TB</span>
+        <div>
+          <span class="brand-kicker">Admin Portal</span>
+          <h1>Dashboard Admin</h1>
+        </div>
+      </div>
+
+      <div class="dashboard-actions">
+        <div class="notification-wrap">
+          <button class="notification-trigger" id="admin-notification-trigger" type="button" aria-label="Buka notifikasi admin">
+            <span aria-hidden="true">🔔</span>
+            <span class="notification-count" id="admin-notification-count">0</span>
+          </button>
+          <div class="notification-panel hidden" id="admin-notification-panel">
+            <div class="notification-header">
+              <strong>Notifikasi</strong>
+              <button class="clear-notif" id="admin-clear-notif" type="button">Bersihkan</button>
+            </div>
+            <div id="admin-notification-list" class="notification-list"></div>
+          </div>
+        </div>
+
+        <div class="user-status user-status-large">
+          <span class="user-chip" id="admin-user-name">Halo, Admin</span>
+        </div>
+        <button class="logout-btn" id="admin-logout" type="button">Keluar</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="dashboard-main">
+    <div class="container dashboard-grid">
+      <aside class="sidebar-card">
+        <div class="sidebar-brand">
+          <div class="school-logo small-logo" aria-label="Logo SMK Taruna Bangsa">
+            <img src="logo-taruna-bangsa.svg" alt="Logo SMK Taruna Bangsa" />
+          </div>
+          <div>
+            <p>SMK</p>
+            <strong>TARUNA BANGSA</strong>
+          </div>
+        </div>
+
+        <nav class="dashboard-nav">
+          <a href="#overview" class="active">Overview</a>
+          <a href="#activity">Aktivitas</a>
+          <a href="index.html">Beranda</a>
+        </nav>
+      </aside>
+
+      <section class="dashboard-content">
+        <div class="welcome-card" id="overview">
+          <div>
+            <span class="sub-title">Panel kontrol</span>
+            <h2>Kelola ekskul dan siswa</h2>
+          </div>
+          <a href="index.html" class="btn btn-primary">Kembali ke Beranda</a>
+        </div>
+
+        <div class="stats-grid">
+          <article class="stat-box highlight">
+            <span class="stat-label">Siswa Terdaftar</span>
+            <strong id="stat-students">0</strong>
+          </article>
+          <article class="stat-box">
+            <span class="stat-label">Ekskul Aktif</span>
+            <strong id="stat-ekskul">0</strong>
+          </article>
+          <article class="stat-box">
+            <span class="stat-label">Prestasi</span>
+            <strong id="stat-prestasi">0</strong>
+          </article>
+        </div>
+
+        <div class="panel-grid performance-grid">
+          <article class="info-panel glass-panel">
+            <div class="panel-head">
+              <h3>Kinerja Operasional</h3>
+              <span class="pill subtle">Mingguan</span>
+            </div>
+            <div class="progress-stack compact-progress">
+              <div>
+                <div class="progress-row"><label>Partisipasi siswa</label><strong>86%</strong></div>
+                <div class="progress-bar"><span style="width: 86%"></span></div>
+              </div>
+              <div>
+                <div class="progress-row"><label>Pelaksanaan ekskul</label><strong>92%</strong></div>
+                <div class="progress-bar"><span style="width: 92%"></span></div>
+              </div>
+              <div>
+                <div class="progress-row"><label>Prestasi terlaksana</label><strong>78%</strong></div>
+                <div class="progress-bar"><span style="width: 78%"></span></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="info-panel glass-panel">
+            <div class="panel-head">
+              <h3>Catatan cepat</h3>
+              <span class="pill">Live</span>
+            </div>
+            <ul class="timeline-list admin-mini-list">
+              <li>
+                <span class="timeline-dot green"></span>
+                <div>
+                  <strong>8 ekskul aktif</strong>
+                  <p>Semua sudah terjadwal dengan lengkap.</p>
+                </div>
+              </li>
+              <li>
+                <span class="timeline-dot blue"></span>
+                <div>
+                  <strong>3 update baru</strong>
+                  <p>Jadwal dan prestasi menunggu persetujuan.</p>
+                </div>
+              </li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="panel-grid" id="activity">
+          <article class="info-panel glass-panel">
+            <div class="panel-head">
+              <h3>Ringkasan Administrasi</h3>
+              <span class="pill">Update</span>
+            </div>
+            <ul class="activity-list">
+              <li>Data siswa terhubung ke sistem pendaftaran lokal.</li>
+              <li>Jadwal ekskul dapat dikelola melalui halaman administrasi.</li>
+              <li>Prestasi terbaru bisa ditambahkan langsung dari halaman admin.</li>
+            </ul>
+          </article>
+
+          <article class="info-panel glass-panel">
+            <div class="panel-head">
+              <h3>Quick Access</h3>
+            </div>
+            <ul class="profile-list">
+              <li><span>Dashboard</span><strong>Aktif</strong></li>
+              <li><span>Portal Siswa</span><strong>Terhubung</strong></li>
+              <li><span>Jadwal</span><strong>Siap</strong></li>
+            </ul>
+          </article>
+        </div>
+
+        <section class="admin-management glass-panel">
+          <div class="panel-head">
+            <h3>Kelola Ekskul</h3>
+            <span class="pill subtle">Admin</span>
+          </div>
+
+          <div class="search-box-wrap admin-search-wrap">
+            <input id="admin-ekskul-search" type="search" placeholder="Cari ekskul atau kegiatan..." aria-label="Cari ekskul admin" />
+          </div>
+
+          <form id="admin-exskul-form" class="admin-form">
+            <div class="admin-row">
+              <label class="field-group">
+                <span>Nama Ekskul</span>
+                <input id="new-ekskul-name" type="text" placeholder="Contoh: Robotika" required>
+              </label>
+              <label class="field-group">
+                <span>Deskripsi</span>
+                <input id="new-ekskul-desc" type="text" placeholder="Tulis deskripsi singkat" required>
+              </label>
+            </div>
+            <button type="submit" class="btn btn-primary">Tambah Ekskul</button>
+          </form>
+
+          <div class="admin-list-wrap">
+            <h4>Daftar Ekskul Saat Ini</h4>
+            <div id="admin-ekskul-list" class="admin-ekskul-list"></div>
+          </div>
+        </section>
+
+        <section class="admin-management glass-panel applicant-section">
+          <div class="panel-head">
+            <h3>Status Pendaftar</h3>
+            <span class="pill subtle">Siswa</span>
+          </div>
+          <div id="applicant-status-list" class="admin-ekskul-list"></div>
+        </section>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    const adminDefaultNotifications = [
+      {
+        id: 'admin-notif-1',
+        title: 'Data siswa terbaru',
+        message: 'Jumlah siswa terdaftar berhasil diperbarui.',
+        time: 'Baru saja',
+        read: false,
+        tone: 'success'
+      },
+      {
+        id: 'admin-notif-2',
+        title: 'Jadwal ekskul diperbarui',
+        message: 'Perubahan jadwal sudah diterapkan di portal.',
+        time: '20 menit lalu',
+        read: false,
+        tone: 'info'
+      },
+      {
+        id: 'admin-notif-3',
+        title: 'Laporan prestasi masuk',
+        message: 'Tim pelatih baru menambahkan pencapaian terbaru.',
+        time: '1 jam lalu',
+        read: true,
+        tone: 'warning'
+      }
+    ];
+
+    function getAdminNotifications() {
+      try {
+        const stored = JSON.parse(localStorage.getItem('admin_notifications') || 'null');
+        if (Array.isArray(stored) && stored.length) return stored;
+        localStorage.setItem('admin_notifications', JSON.stringify(adminDefaultNotifications));
+        return adminDefaultNotifications;
+      } catch (error) {
+        return adminDefaultNotifications;
+      }
+    }
+
+    function saveAdminNotifications(list) {
+      localStorage.setItem('admin_notifications', JSON.stringify(list));
+    }
+
+    function renderAdminNotifications() {
+      const listEl = document.getElementById('admin-notification-list');
+      const countEl = document.getElementById('admin-notification-count');
+      if (!listEl || !countEl) return;
+
+      const notifications = getAdminNotifications();
+      const unread = notifications.filter((item) => !item.read).length;
+      countEl.textContent = unread;
+      countEl.style.display = unread > 0 ? 'inline-flex' : 'none';
+
+      listEl.innerHTML = notifications.map((item) => `
+        <div class="notification-item ${item.read ? 'read' : 'unread'}" data-id="${item.id}">
+          <div class="notification-indicator ${item.tone || 'info'}"></div>
+          <div class="notification-copy">
+            <strong>${item.title}</strong>
+            <p>${item.message}</p>
+            <span>${item.time}</span>
+          </div>
+          <button class="notification-dismiss" type="button" data-id="${item.id}" aria-label="Hapus notifikasi">×</button>
+        </div>
+      `).join('');
+    }
+
+    function showAdminToast(title, message, tone = 'info') {
+      const existing = document.querySelector('.toast');
+      if (existing) existing.remove();
+
+      const toast = document.createElement('div');
+      toast.className = `toast ${tone}`;
+      toast.innerHTML = `
+        <div class="toast-icon">${tone === 'success' ? '✓' : tone === 'warning' ? '!' : 'i'}</div>
+        <div>
+          <strong>${title}</strong>
+          <p>${message}</p>
+        </div>
+      `;
+      document.body.appendChild(toast);
+      setTimeout(() => toast.classList.add('show'), 40);
+      setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => toast.remove(), 300);
+      }, 2600);
+    }
+
+    function addAdminNotification({ title, message, tone = 'info', time = 'Baru saja' }) {
+      const notifications = getAdminNotifications();
+      notifications.unshift({
+        id: `admin-notif-${Date.now()}`,
+        title,
+        message,
+        time,
+        read: false,
+        tone
+      });
+      saveAdminNotifications(notifications.slice(0, 6));
+      renderAdminNotifications();
+      showAdminToast(title, message, tone);
+    }
+
+    document.querySelectorAll('.dashboard-nav a[href^="#"]').forEach((link) => {
+      link.addEventListener('click', (event) => {
+        const targetId = link.getAttribute('href');
+        const target = targetId ? document.querySelector(targetId) : null;
+        if (!target) return;
+        event.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (history.pushState) history.pushState(null, '', targetId);
+      });
+    });
+
+    function getEkskulList() {
+      try {
+        const stored = JSON.parse(localStorage.getItem('ex_ekskul') || '[]');
+        const list = (stored.length ? stored : [
+          { name: 'Futsal', desc: 'Latihan teknik, taktik, dan kebugaran untuk pertandingan antar sekolah.' },
+          { name: 'Basket', desc: 'Pengembangan skill dribbling, shooting, dan strategi tim.' },
+          { name: 'Volley', desc: 'Latihan passing, serve, dan kerja sama tim.' },
+          { name: 'Paskibra', desc: 'Pelatihan baris-berbaris, kedisiplinan, dan tata upacara.' },
+          { name: 'Pencak Silat', desc: 'Belajar teknik bertahan dan penyerangan tradisional.' },
+          { name: 'Musik', desc: 'Latihan instrumen, aransemen, dan pentas seni sekolah.' },
+          { name: 'Esport Nasa', desc: 'Kompetisi game dan strategi tim.' },
+          { name: 'Polsis', desc: 'Program keamanan sekolah dan latihan kesiapsiagaan.' }
+        ]).filter((item) => String(item.name || '').toLowerCase() !== 'robotika');
+
+        if (stored.length !== list.length) {
+          localStorage.setItem('ex_ekskul', JSON.stringify(list));
+        }
+        return list;
+      } catch (error) {
+        return [];
+      }
+    }
+
+    function renderAdminEkskulList(filter = '') {
+      const list = document.getElementById('admin-ekskul-list');
+      if (!list) return;
+      const ekskuls = getEkskulList().filter((item) => {
+        const target = `${item.name} ${item.desc}`.toLowerCase();
+        return !filter || target.includes(filter.toLowerCase());
+      });
+
+      list.innerHTML = ekskuls.map((item) => `
+        <div class="admin-ekskul-item">
+          <div>
+            <strong>${item.name}</strong>
+            <p>${item.desc}</p>
+          </div>
+          <button type="button" class="mini-delete" data-name="${item.name}">Hapus</button>
+        </div>
+      `).join('');
+    }
+
+    function renderApplicantStatuses() {
+      const list = document.getElementById('applicant-status-list');
+      if (!list) return;
+      const students = JSON.parse(localStorage.getItem('students') || '[]');
+      list.innerHTML = students.map((student) => `
+        <div class="admin-ekskul-item">
+          <div><strong>${student.name || '-'}</strong><p>NIS ${student.nis || '-'} | ${student.kelas || '-'}</p></div>
+          <span class="pill">${student.statusPendaftar || 'Menunggu Verifikasi'}</span>
+        </div>
+      `).join('') || '<p class="muted">Belum ada data pendaftar.</p>';
+    }
+
+    const adminData = JSON.parse(sessionStorage.getItem('loggedInAdmin') || 'null');
+    if (!adminData) {
+      window.location.href = 'admin-login.html';
+    } else {
+      document.getElementById('admin-user-name').textContent = 'Halo, ' + (adminData.name || 'Admin');
+      const students = JSON.parse(localStorage.getItem('students') || '[]');
+      const ekskuls = getEkskulList();
+      const prestasi = JSON.parse(localStorage.getItem('ex_prestasi') || '[]');
+      document.getElementById('stat-students').textContent = students.length;
+      document.getElementById('stat-ekskul').textContent = ekskuls.length;
+      document.getElementById('stat-prestasi').textContent = prestasi.length;
+      renderAdminEkskulList();
+      renderApplicantStatuses();
+    }
+
+    const adminEkskulSearch = document.getElementById('admin-ekskul-search');
+    if (adminEkskulSearch) {
+      adminEkskulSearch.addEventListener('input', function () {
+        renderAdminEkskulList(this.value);
+      });
+    }
+
+    document.getElementById('admin-exskul-form')?.addEventListener('submit', function (event) {
+      event.preventDefault();
+      const name = document.getElementById('new-ekskul-name').value.trim();
+      const desc = document.getElementById('new-ekskul-desc').value.trim();
+      if (!name || !desc) return;
+
+      const existing = getEkskulList();
+      const duplicate = existing.some((item) => item.name.toLowerCase() === name.toLowerCase());
+      if (duplicate) {
+        alert('Ekskul sudah ada.');
+        return;
+      }
+
+      existing.push({ name, desc });
+      localStorage.setItem('ex_ekskul', JSON.stringify(existing));
+      this.reset();
+      renderAdminEkskulList(adminEkskulSearch ? adminEkskulSearch.value : '');
+      document.getElementById('stat-ekskul').textContent = existing.length;
+      addAdminNotification({
+        title: 'Ekskul baru ditambahkan',
+        message: `${name} berhasil ditambahkan ke daftar ekskul.`,
+        tone: 'success',
+        time: 'Baru saja'
+      });
+    });
+
+    document.getElementById('admin-ekskul-list')?.addEventListener('click', function (event) {
+      const button = event.target.closest('.mini-delete');
+      if (!button) return;
+      const name = button.dataset.name;
+      const list = getEkskulList().filter((item) => item.name !== name);
+      localStorage.setItem('ex_ekskul', JSON.stringify(list));
+      renderAdminEkskulList(adminEkskulSearch ? adminEkskulSearch.value : '');
+      document.getElementById('stat-ekskul').textContent = list.length;
+      addAdminNotification({
+        title: 'Ekskul dihapus',
+        message: `${name} telah dihapus dari daftar ekskul.`,
+        tone: 'warning',
+        time: 'Baru saja'
+      });
+    });
+
+    const adminNotificationTrigger = document.getElementById('admin-notification-trigger');
+    const adminNotificationPanel = document.getElementById('admin-notification-panel');
+    const adminClearNotif = document.getElementById('admin-clear-notif');
+
+    function closeAllNotificationPanels() {
+      document.querySelectorAll('.notification-panel').forEach((otherPanel) => {
+        otherPanel.classList.add('hidden');
+      });
+    }
+
+    if (adminNotificationTrigger && adminNotificationPanel) {
+      adminNotificationTrigger.addEventListener('click', (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+
+        const isOpen = !adminNotificationPanel.classList.contains('hidden');
+        closeAllNotificationPanels();
+
+        if (!isOpen) {
+          adminNotificationPanel.classList.remove('hidden');
+          adminNotificationTrigger.setAttribute('aria-expanded', 'true');
+        } else {
+          adminNotificationTrigger.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+
+    if (adminClearNotif) {
+      adminClearNotif.addEventListener('click', () => {
+        saveAdminNotifications([]);
+        renderAdminNotifications();
+      });
+    }
+
+    document.getElementById('admin-notification-list')?.addEventListener('click', function (event) {
+      const dismissBtn = event.target.closest('.notification-dismiss');
+      if (!dismissBtn) {
+        const item = event.target.closest('.notification-item');
+        if (!item) return;
+        const notifications = getAdminNotifications().map((entry) => entry.id === item.dataset.id ? { ...entry, read: true } : entry);
+        saveAdminNotifications(notifications);
+        renderAdminNotifications();
+        return;
+      }
+
+      const notifications = getAdminNotifications().filter((entry) => entry.id !== dismissBtn.dataset.id);
+      saveAdminNotifications(notifications);
+      renderAdminNotifications();
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!adminNotificationPanel) return;
+      const target = event.target;
+      const clickedInside = adminNotificationPanel.contains(target);
+      const clickedTrigger = adminNotificationTrigger && (adminNotificationTrigger === target || adminNotificationTrigger.contains(target));
+
+      if (!clickedInside && !clickedTrigger && !adminNotificationPanel.classList.contains('hidden')) {
+        adminNotificationPanel.classList.add('hidden');
+        if (adminNotificationTrigger) adminNotificationTrigger.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    document.getElementById('admin-logout').addEventListener('click', function () {
+      sessionStorage.removeItem('loggedInAdmin');
+      window.location.href = 'admin-login.html';
+    });
+
+    renderAdminNotifications();
+    addAdminNotification({
+      title: 'Panel admin aktif',
+      message: 'Semua modul dashboard siap dipantau dan dikelola.',
+      tone: 'info',
+      time: 'Sekarang'
+    });
+  </script>
+</body>
+</html>

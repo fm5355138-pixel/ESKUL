@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portal Ekstrakurikuler - SMK Taruna Bangsa</title>
+  
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Fallback CSS Kritis -->
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --dark: #0f172a;
+    }
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      color: #111;
+      background:
+        radial-gradient(circle at 12% 15%, rgba(124, 58, 237, 0.18), transparent 24%),
+        radial-gradient(circle at 80% 12%, rgba(34, 211, 238, 0.14), transparent 20%),
+        linear-gradient(135deg, #f8fbff 0%, #eef4ff 28%, #f7f5ff 55%, #f0fbff 100%);
+    }
+    .site-header { display: block; padding: 14px 0; border-bottom: 1px solid #e6edf5; }
+    .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+    .header-container { display: flex; justify-content: space-between; align-items: center; }
+    .main-nav { display: flex; gap: 18px; align-items: center; }
+    .nav-link { color: #4b5563; text-decoration: none; }
+    @media (max-width: 720px) {
+      .main-nav { display: none; }
+    }
+  </style>
+</head>
+<body class="landing-page home-page">
+
+  <!-- TOP STRIP -->
+  <div class="top-strip">
+    <div class="container top-strip-inner">
+      <span class="top-phone">☎ <strong>0857 7359 7604</strong></span>
+      <div class="top-socials" aria-label="Media sosial sekolah">
+        <a href="#" aria-label="Facebook">f</a>
+        <a href="#" aria-label="YouTube">▶</a>
+        <a href="#" aria-label="Instagram">◎</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container header-container">
+      <button class="nav-toggle-left" aria-label="Buka menu">☰</button>
+      
+      <div class="brand">
+        <a href="index.html">
+          <img class="brand-logo" src="logo-saya.png" alt="Logo SMK Taruna Bangsa" />
+        </a>
+      </div>
+      
+      <div class="header-right">
+        <nav id="main-navigation" class="main-nav">
+          <a href="index.html" class="nav-link active">Home</a>
+          
+          <div class="nav-dropdown">
+            <button class="nav-link nav-dropdown-toggle" type="button" aria-expanded="false">Daftar Ekskul</button>
+            <div class="nav-dropdown-menu" aria-label="Daftar ekskul">
+              <a class="dropdown-ekskul-link futsal-link" href="ekskul-detail.html?name=Futsal">Futsal</a>
+              <a class="dropdown-ekskul-link basket-link" href="ekskul-detail.html?name=Basket">Basket</a>
+              <a class="dropdown-ekskul-link volley-link" href="ekskul-detail.html?name=Volley">Volley</a>
+              <a class="dropdown-ekskul-link paskibra-link" href="ekskul-detail.html?name=Paskibra">Paskibra</a>
+              <a class="dropdown-ekskul-link silat-link" href="ekskul-detail.html?name=Pencak%20Silat">Pencak Silat</a>
+              <a class="dropdown-ekskul-link musik-link" href="ekskul-detail.html?name=Musik">Musik</a>
+              <a class="dropdown-ekskul-link esport-link" href="ekskul-detail.html?name=Esport%20Nasa">Esport Nasa</a>
+              <a class="dropdown-ekskul-link polsis-link" href="ekskul-detail.html?name=Polsis">Polsis</a>
+            </div>
+          </div>
+
+          <a href="pembina.html" class="nav-link">Pembina</a>
+          <a href="prestasi.html" class="nav-link">Prestasi</a>
+          <a href="jadwal.html" class="nav-link">Jadwal</a>
+          <a href="informasi.html" class="nav-link">Informasi</a>
+
+          <div class="nav-dropdown">
+            <button class="nav-link nav-dropdown-toggle" type="button" aria-expanded="false">Dokumentasi</button>
+            <div class="nav-dropdown-menu" aria-label="Dokumentasi">
+              <a class="dropdown-dokumentasi-link" href="dokumentasi.html?type=Foto">Foto</a>
+              <a class="dropdown-dokumentasi-link" href="dokumentasi.html?type=Video">Video</a>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- MARQUEE BANNER -->
+  <div class="marquee-banner" aria-label="Informasi bergerak">
+    <div class="marquee-track">
+      <div class="marquee-item">TARUNA BANGSA</div>
+      <div class="marquee-item">BERPRESTASI • BERKARAKTER • BERINOVASI</div>
+      <div class="marquee-item">TARUNA BANGSA</div>
+      <div class="marquee-item">BERPRESTASI • BERKARAKTER • BERINOVASI</div>
+      <div class="marquee-item">TARUNA BANGSA</div>
+      <div class="marquee-item">BERPRESTASI • BERKARAKTER • BERINOVASI</div>
+    </div>
+  </div>
+
+  <!-- PANEL MOBILE NAVIGASI -->
+  <aside id="left-panel" class="left-panel" aria-hidden="true">
+    <div class="panel-inner">
+      <button class="close-btn" aria-label="Tutup">✕</button>
+      <nav class="mobile-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <div class="mobile-nav-dropdown">
+          <button class="nav-link nav-dropdown-toggle" type="button" aria-expanded="false">Daftar Ekskul</button>
+          <div class="mobile-dropdown-menu">
+            <a class="dropdown-ekskul-link futsal-link" href="ekskul-detail.html?name=Futsal">Futsal</a>
+            <a class="dropdown-ekskul-link basket-link" href="ekskul-detail.html?name=Basket">Basket</a>
+            <a class="dropdown-ekskul-link volley-link" href="ekskul-detail.html?name=Volley">Volley</a>
+            <a class="dropdown-ekskul-link paskibra-link" href="ekskul-detail.html?name=Paskibra">Paskibra</a>
+            <a class="dropdown-ekskul-link silat-link" href="ekskul-detail.html?name=Pencak%20Silat">Pencak Silat</a>
+            <a class="dropdown-ekskul-link musik-link" href="ekskul-detail.html?name=Musik">Musik</a>
+            <a class="dropdown-ekskul-link esport-link" href="ekskul-detail.html?name=Esport%20Nasa">Esport Nasa</a>
+            <a class="dropdown-ekskul-link polsis-link" href="ekskul-detail.html?name=Polsis">Polsis</a>
+          </div>
+        </div>
+        <a href="pembina.html" class="nav-link">Pembina</a>
+        <a href="prestasi.html" class="nav-link">Prestasi</a>
+        <a href="jadwal.html" class="nav-link">Jadwal</a>
+        <a href="informasi.html" class="nav-link">Informasi</a>
+      </nav>
+    </div>
+  </aside>
+
+  <!-- KONTEN UTAMA -->
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <div class="hero-bg" aria-hidden="true">
+        <div class="blob b1"></div>
+        <div class="blob b2"></div>
+        <div class="blob b3"></div>
+      </div>
+      <div class="container hero-container">
+        <div class="hero-content">
+          <span class="hero-tag">RUANG TUMBUH BAKAT SISWA</span>
+          <h1 class="hero-title">Kembangkan Bakatmu, Ciptakan Prestasimu</h1>
+          <p class="hero-description">
+            Pilih ekskul yang sesuai dengan minatmu, belajar bersama pembina berpengalaman, dan tumbuh menjadi siswa yang aktif, percaya diri, serta berprestasi.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary hero-join-button" href="student-register.html">Gabung Ekskul</a>
+            <a class="btn btn-secondary" href="prestasi.html">Lihat Prestasi</a>
+          </div>
+        </div>
+        
+        <div class="hero-visual">
+          <div class="hero-visual-frame">
+            <img src="logo_landing_page.png" alt="Gedung SMK Taruna Bangsa">
+            <span class="hero-visual-caption">Lingkungan belajar dan berkembang</span>
+          </div>
+        </div>
+      </div>
+
+      <button class="hero-arrow hero-arrow-left" aria-label="Slide sebelumnya">‹</button>
+      <button class="hero-arrow hero-arrow-right" aria-label="Slide berikutnya">›</button>
+      <div class="hero-dots" aria-hidden="true">
+        <span class="active"></span>
+        <span></span>
+        <span></span>
+      </div>
+    </section>
+
+    <!-- CLOSING CTA SECTION -->
+    <section class="closing-cta" aria-labelledby="closing-cta-title">
+      <div class="container closing-cta-inner">
+        <div>
+          <span class="closing-cta-kicker">MULAI PERJALANANMU</span>
+          <h2 id="closing-cta-title">Kembangkan potensi dan raih prestasi bersama kami.</h2>
+          <p>Pilih kegiatan ekstrakurikuler yang sesuai dengan minat dan bakatmu untuk mengembangkan kemampuan, karakter, dan prestasi bersama SMK Taruna Bangsa.</p>
+        </div>
+        <div class="closing-cta-actions">
+          <a class="btn btn-light" href="student-register.html">Daftar Sekarang</a>
+          <a class="closing-cta-contact" href="https://wa.me/6285773597604?text=Halo%20Admin%20SMK%20Taruna%20Bangsa%2C%20saya%20ingin%20menanyakan%20informasi%20tentang%20kegiatan%20ekstrakurikuler." target="_blank" rel="noreferrer">
+            Tanya Admin <span aria-hidden="true">&#8599;</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PORTAL SISWA -->
+    <section id="student-portal" class="student-portal hidden">
+      <div class="container">
+        <div class="portal-card">
+          <div>
+            <span class="sub-title">Portal Siswa</span>
+            <h2>Selamat datang di ruang aktivitas ekstrakurikulermu.</h2>
+          </div>
+          <div class="portal-meta">
+            <div class="meta-item">
+              <span>Nama</span>
+              <strong id="portal-name">-</strong>
+            </div>
+            <div class="meta-item">
+              <span>NIS</span>
+              <strong id="portal-nis">-</strong>
+            </div>
+            <div class="meta-item">
+              <span>Kelas</span>
+              <strong id="portal-kelas">-</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FLOATING WHATSAPP -->
+  <a class="whatsapp-float" href="https://wa.me/6285773597604" target="_blank" rel="noreferrer">
+    <span aria-hidden="true">◔</span> Hubungi Admin ?
+  </a>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-brand">
+        <strong>SMK Taruna Bangsa</strong>
+        <p>Portal kegiatan ekstrakurikuler untuk mendukung bakat, karakter, dan prestasi siswa.</p>
+      </div>
+      <div class="footer-links">
+        <span class="footer-heading">Jelajahi</span>
+        <a href="index.html">Beranda</a>
+        <a href="ekskul-detail.html?name=Futsal">Daftar Ekskul</a>
+        <a href="prestasi.html">Prestasi</a>
+        <a href="jadwal.html">Jadwal</a>
+      </div>
+      <div class="footer-contact">
+        <span class="footer-heading">Hubungi</span>
+        <a href="https://wa.me/6285773597604" target="_blank" rel="noreferrer">0857 7359 7604</a>
+        <span>Senin - Jumat, 07.00 - 15.00</span>
+      </div>
+    </div>
+    <p class="footer-copy">&copy; 2026 SMK Taruna Bangsa. Semua hak dilindungi.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>   
