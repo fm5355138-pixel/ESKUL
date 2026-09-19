@@ -146,27 +146,30 @@ document.addEventListener('DOMContentLoaded',()=>{
 		});
 	}
 
-	// Scrollspy: highlight active nav link based on sections in view
-	const sections = document.querySelectorAll('section[id]');
+	// Scrollspy: hanya aktif untuk navigasi anchor dalam satu halaman (mis. <a href="#section">)
+	// Link antar-halaman (index.html, pembina.html, dst.) memakai class "active" statis di HTML.
+	const anchorLinks = Array.from(document.querySelectorAll('.main-nav .nav-link[href^="#"]'));
+	const sections = anchorLinks.map(l => document.getElementById(l.getAttribute('href').slice(1))).filter(Boolean);
 	const navLinks = document.querySelectorAll('.main-nav .nav-link');
 
-	function updateActiveLink(){
-		let found = false;
-		sections.forEach(sec=>{
-			const rect = sec.getBoundingClientRect();
-			if(!found && rect.top <= 120 && rect.bottom > 120){
-				const id = sec.id;
-				navLinks.forEach(l=>l.classList.toggle('active', l.getAttribute('href') === '#'+id || (l.getAttribute('href')==='index.html' && id==='')));
-				found = true;
+	if (anchorLinks.length && sections.length) {
+		function updateActiveLink(){
+			let found = false;
+			sections.forEach(sec=>{
+				const rect = sec.getBoundingClientRect();
+				if(!found && rect.top <= 120 && rect.bottom > 120){
+					const id = sec.id;
+					anchorLinks.forEach(l=>l.classList.toggle('active', l.getAttribute('href') === '#'+id));
+					found = true;
+				}
+			});
+			if(!found){
+				anchorLinks.forEach(l=>l.classList.remove('active'));
 			}
-		});
-		if(!found){ // top of page
-			navLinks.forEach(l=>l.classList.toggle('active', l.getAttribute('href')==='index.html'));
 		}
+		window.addEventListener('scroll', updateActiveLink, {passive:true});
+		updateActiveLink();
 	}
-
-	window.addEventListener('scroll', updateActiveLink, {passive:true});
-	updateActiveLink();
 
 	// Auto-close mobile nav after clicking a link
 	const mainNavLinks = document.querySelectorAll('#main-navigation .nav-link');
@@ -257,6 +260,46 @@ document.addEventListener('DOMContentLoaded',()=>{
 	},{threshold:0.12});
 
 	document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
+
+	// Hero slider (fade) - beranda
+	(function(){
+		const slides = document.querySelectorAll('.hero-slide');
+		const dots = document.querySelectorAll('.hero-dots button');
+		const prevBtn = document.querySelector('.hero-arrow-left');
+		const nextBtn = document.querySelector('.hero-arrow-right');
+		const hero = document.querySelector('.hero');
+		if(!slides.length) return;
+
+		let current = 0;
+		let timer = null;
+		const INTERVAL = 5000;
+		const reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+		function goTo(index){
+			current = (index + slides.length) % slides.length;
+			slides.forEach((slide, i) => slide.classList.toggle('active', i === current));
+			dots.forEach((dot, i) => dot.classList.toggle('active', i === current));
+		}
+		function nextSlide(){ goTo(current + 1); }
+		function prevSlide(){ goTo(current - 1); }
+		function startAuto(){
+			if(reducedMotion) return;
+			stopAuto();
+			timer = setInterval(nextSlide, INTERVAL);
+		}
+		function stopAuto(){ if(timer){ clearInterval(timer); timer = null; } }
+
+		if(prevBtn) prevBtn.addEventListener('click', () => { prevSlide(); startAuto(); });
+		if(nextBtn) nextBtn.addEventListener('click', () => { nextSlide(); startAuto(); });
+		dots.forEach((dot, i) => dot.addEventListener('click', () => { goTo(i); startAuto(); }));
+
+		if(hero){
+			hero.addEventListener('mouseenter', stopAuto);
+			hero.addEventListener('mouseleave', startAuto);
+		}
+
+		startAuto();
+	})();
 });
 
 // Simple client-side management: add entries and persist to localStorage

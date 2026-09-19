@@ -147,18 +147,50 @@
         <div class="blob b3"></div>
       </div>
       <div class="container hero-container">
-        <div class="hero-content">
-          <span class="hero-tag">RUANG TUMBUH BAKAT SISWA</span>
-          <h1 class="hero-title">Kembangkan Bakatmu, Ciptakan Prestasimu</h1>
-          <p class="hero-description">
-            Pilih ekskul yang sesuai dengan minatmu, belajar bersama pembina berpengalaman, dan tumbuh menjadi siswa yang aktif, percaya diri, serta berprestasi.
-          </p>
-          <div class="hero-actions">
-            <a class="btn btn-primary hero-join-button" href="student-register.html">Gabung Ekskul</a>
-            <a class="btn btn-secondary" href="prestasi.html">Lihat Prestasi</a>
+        <div id="hero-slides" class="hero-slides">
+          <div class="hero-slide active">
+            <div class="hero-content">
+              <span class="hero-tag">RUANG TUMBUH BAKAT SISWA</span>
+              <h1 class="hero-title">Kembangkan Bakatmu, Ciptakan Prestasimu</h1>
+              <p class="hero-description">
+                Pilih ekskul yang sesuai dengan minatmu, belajar bersama pembina berpengalaman, dan tumbuh menjadi siswa yang aktif, percaya diri, serta berprestasi.
+              </p>
+              <div class="hero-actions">
+                <a class="btn btn-primary hero-join-button" href="student-register.html">Gabung Ekskul</a>
+                <a class="btn btn-secondary" href="prestasi.html">Lihat Prestasi</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-slide">
+            <div class="hero-content">
+              <span class="hero-tag">JADWAL KEGIATAN</span>
+              <h1 class="hero-title">Latihan Rutin bersama Pembina Berpengalaman</h1>
+              <p class="hero-description">
+                Cek jadwal latihan setiap ekskul dan hadiri kegiatanmu tepat waktu agar bakatmu terus terasah setiap pekan.
+              </p>
+              <div class="hero-actions">
+                <a class="btn btn-primary hero-join-button" href="student-register.html">Gabung Ekskul</a>
+                <a class="btn btn-secondary" href="jadwal.html">Lihat Jadwal</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-slide">
+            <div class="hero-content">
+              <span class="hero-tag">RAIH PRESTASI</span>
+              <h1 class="hero-title">Bangga Mengharumkan Nama Sekolah</h1>
+              <p class="hero-description">
+                Raih prestasi di tingkat kota maupun nasional dan jadilah kebanggaan SMK Taruna Bangsa lewat ekskul pilihanmu.
+              </p>
+              <div class="hero-actions">
+                <a class="btn btn-primary hero-join-button" href="student-register.html">Gabung Ekskul</a>
+                <a class="btn btn-secondary" href="prestasi.html">Lihat Prestasi</a>
+              </div>
+            </div>
           </div>
         </div>
-        
+
         <div class="hero-visual">
           <div class="hero-visual-frame">
             <img src="logo_landing_page.png" alt="Gedung SMK Taruna Bangsa">
@@ -169,10 +201,10 @@
 
       <button class="hero-arrow hero-arrow-left" aria-label="Slide sebelumnya">‹</button>
       <button class="hero-arrow hero-arrow-right" aria-label="Slide berikutnya">›</button>
-      <div class="hero-dots" aria-hidden="true">
-        <span class="active"></span>
-        <span></span>
-        <span></span>
+      <div class="hero-dots" role="tablist" aria-label="Pilih slide">
+        <button type="button" class="active" aria-label="Slide 1"></button>
+        <button type="button" aria-label="Slide 2"></button>
+        <button type="button" aria-label="Slide 3"></button>
       </div>
     </section>
 
