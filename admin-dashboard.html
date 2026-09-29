@@ -9,9 +9,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
-<body class="dashboard-page admin-dashboard-page">
-  <header class="dashboard-header admin-header">
-    <div class="container dashboard-topbar">
+<body class="halaman-dasbor admin-dashboard-page">
+  <header class="kepala-dasbor admin-header">
+    <div class="container bilah-atas-dasbor">
       <div class="brand brand-dashboard">
         <span class="brand-badge">SMK TB</span>
         <div>
@@ -20,31 +20,31 @@
         </div>
       </div>
 
-      <div class="dashboard-actions">
-        <div class="notification-wrap">
-          <button class="notification-trigger" id="admin-notification-trigger" type="button" aria-label="Buka notifikasi admin">
+      <div class="aksi-dasbor">
+        <div class="notifikasi-bungkus">
+          <button class="notifikasi-pemicu" id="admin-notification-trigger" type="button" aria-label="Buka notifikasi admin">
             <span aria-hidden="true">🔔</span>
-            <span class="notification-count" id="admin-notification-count">0</span>
+            <span class="notifikasi-jumlah" id="admin-notification-count">0</span>
           </button>
-          <div class="notification-panel hidden" id="admin-notification-panel">
-            <div class="notification-header">
+          <div class="notifikasi-panel tersembunyi" id="admin-notification-panel">
+            <div class="notifikasi-kepala">
               <strong>Notifikasi</strong>
-              <button class="clear-notif" id="admin-clear-notif" type="button">Bersihkan</button>
+              <button class="bersih-notifikasi" id="admin-clear-notif" type="button">Bersihkan</button>
             </div>
-            <div id="admin-notification-list" class="notification-list"></div>
+            <div id="admin-notification-list" class="notifikasi-daftar"></div>
           </div>
         </div>
 
-        <div class="user-status user-status-large">
-          <span class="user-chip" id="admin-user-name">Halo, Admin</span>
+        <div class="status-pengguna status-pengguna-besar">
+          <span class="chip-pengguna" id="admin-user-name">Halo, Admin</span>
         </div>
-        <button class="logout-btn" id="admin-logout" type="button">Keluar</button>
+        <button class="tombol-keluar" id="admin-logout" type="button">Keluar</button>
       </div>
     </div>
   </header>
 
-  <main class="dashboard-main">
-    <div class="container dashboard-grid">
+  <main class="utama-dasbor">
+    <div class="container kisi-dasbor">
       <aside class="sidebar-card">
         <div class="sidebar-brand">
           <div class="school-logo small-logo" aria-label="Logo SMK Taruna Bangsa">
@@ -56,20 +56,20 @@
           </div>
         </div>
 
-        <nav class="dashboard-nav">
-          <a href="#overview" class="active">Overview</a>
+        <nav class="navigasi-dasbor">
+          <a href="#overview" class="aktif">Overview</a>
           <a href="#activity">Aktivitas</a>
           <a href="index.html">Beranda</a>
         </nav>
       </aside>
 
-      <section class="dashboard-content">
+      <section class="isi-dasbor">
         <div class="welcome-card" id="overview">
           <div>
             <span class="sub-title">Panel kontrol</span>
             <h2>Kelola ekskul dan siswa</h2>
           </div>
-          <a href="index.html" class="btn btn-primary">Kembali ke Beranda</a>
+          <a href="index.html" class="tombol tombol-utama">Kembali ke Beranda</a>
         </div>
 
         <div class="stats-grid">
@@ -91,7 +91,7 @@
           <article class="info-panel glass-panel">
             <div class="panel-head">
               <h3>Kinerja Operasional</h3>
-              <span class="pill subtle">Mingguan</span>
+              <span class="lencana halus">Mingguan</span>
             </div>
             <div class="progress-stack compact-progress">
               <div>
@@ -112,7 +112,7 @@
           <article class="info-panel glass-panel">
             <div class="panel-head">
               <h3>Catatan cepat</h3>
-              <span class="pill">Live</span>
+              <span class="lencana">Live</span>
             </div>
             <ul class="timeline-list admin-mini-list">
               <li>
@@ -137,7 +137,7 @@
           <article class="info-panel glass-panel">
             <div class="panel-head">
               <h3>Ringkasan Administrasi</h3>
-              <span class="pill">Update</span>
+              <span class="lencana">Update</span>
             </div>
             <ul class="activity-list">
               <li>Data siswa terhubung ke sistem pendaftaran lokal.</li>
@@ -161,7 +161,7 @@
         <section class="admin-management glass-panel">
           <div class="panel-head">
             <h3>Kelola Ekskul</h3>
-            <span class="pill subtle">Admin</span>
+            <span class="lencana halus">Admin</span>
           </div>
 
           <div class="search-box-wrap admin-search-wrap">
@@ -179,7 +179,7 @@
                 <input id="new-ekskul-desc" type="text" placeholder="Tulis deskripsi singkat" required>
               </label>
             </div>
-            <button type="submit" class="btn btn-primary">Tambah Ekskul</button>
+            <button type="submit" class="tombol tombol-utama">Tambah Ekskul</button>
           </form>
 
           <div class="admin-list-wrap">
@@ -191,14 +191,146 @@
         <section class="admin-management glass-panel applicant-section">
           <div class="panel-head">
             <h3>Status Pendaftar</h3>
-            <span class="pill subtle">Siswa</span>
+            <span class="lencana halus">Siswa</span>
           </div>
+
+          <div class="search-box-wrap admin-search-wrap">
+            <input id="applicant-search" type="search" placeholder="Cari nama, NIS, atau kelas..." aria-label="Cari pendaftar" />
+          </div>
+
+          <div class="admin-toolbar">
+            <button type="button" class="tombol tombol-garis" id="export-students">Export CSV</button>
+          </div>
+
           <div id="applicant-status-list" class="admin-ekskul-list"></div>
+        </section>
+
+        <section class="admin-management glass-panel">
+          <div class="panel-head">
+            <h3>Kelola Prestasi</h3>
+            <span class="lencana halus">Admin</span>
+          </div>
+
+          <form id="admin-prestasi-form" class="admin-form">
+            <div class="admin-row">
+              <label class="field-group">
+                <span>Judul Prestasi</span>
+                <input id="new-prestasi-title" type="text" placeholder="Contoh: Juara 1 Futsal" required>
+              </label>
+              <label class="field-group">
+                <span>Tahun</span>
+                <input id="new-prestasi-year" type="number" min="2000" max="2100" placeholder="2026" required>
+              </label>
+            </div>
+            <label class="field-group">
+              <span>Deskripsi</span>
+              <input id="new-prestasi-desc" type="text" placeholder="Tulis raihan prestasi" required>
+            </label>
+            <button type="submit" class="tombol tombol-utama">Tambah Prestasi</button>
+          </form>
+
+          <div class="admin-list-wrap">
+            <h4>Daftar Prestasi</h4>
+            <div id="admin-prestasi-list" class="admin-ekskul-list"></div>
+          </div>
+        </section>
+
+        <section class="admin-management glass-panel">
+          <div class="panel-head">
+            <h3>Kelola Jadwal</h3>
+            <span class="lencana halus">Admin</span>
+          </div>
+
+          <form id="admin-jadwal-form" class="admin-form">
+            <div class="admin-row">
+              <label class="field-group">
+                <span>Hari</span>
+                <select id="new-jadwal-hari" required>
+                  <option value="Senin">Senin</option>
+                  <option value="Selasa">Selasa</option>
+                  <option value="Rabu">Rabu</option>
+                  <option value="Kamis">Kamis</option>
+                  <option value="Jumat">Jumat</option>
+                  <option value="Sabtu">Sabtu</option>
+                </select>
+              </label>
+              <label class="field-group">
+                <span>Ekskul</span>
+                <select id="new-jadwal-ekskul" required></select>
+              </label>
+            </div>
+            <div class="admin-row">
+              <label class="field-group">
+                <span>Waktu</span>
+                <input id="new-jadwal-waktu" type="text" placeholder="15:30 - 17:00" required>
+              </label>
+              <label class="field-group">
+                <span>Lokasi</span>
+                <input id="new-jadwal-lokasi" type="text" placeholder="Lapangan Utama" required>
+              </label>
+            </div>
+            <button type="submit" class="tombol tombol-utama">Tambah Jadwal</button>
+          </form>
+
+          <div class="admin-list-wrap">
+            <h4>Daftar Jadwal</h4>
+            <div id="admin-jadwal-list" class="admin-ekskul-list"></div>
+          </div>
+        </section>
+
+        <section class="admin-management glass-panel">
+          <div class="panel-head">
+            <h3>Kelola Dokumentasi</h3>
+            <span class="lencana halus">Galeri</span>
+          </div>
+
+          <form id="admin-dokumentasi-form" class="admin-form">
+            <div class="admin-row">
+              <label class="field-group">
+                <span>Tipe</span>
+                <select id="new-dokumentasi-type" required>
+                  <option value="foto">Foto</option>
+                  <option value="video">Video</option>
+                </select>
+              </label>
+              <label class="field-group">
+                <span>Tanggal</span>
+                <input id="new-dokumentasi-date" type="text" placeholder="12 Januari 2026" required>
+              </label>
+            </div>
+            <div class="admin-row">
+              <label class="field-group">
+                <span>Judul</span>
+                <input id="new-dokumentasi-title" type="text" placeholder="Latihan Rutin Futsal" required>
+              </label>
+              <label class="field-group">
+                <span>URL Gambar</span>
+                <input id="new-dokumentasi-img" type="url" placeholder="https://..." required>
+              </label>
+            </div>
+            <div class="admin-row">
+              <label class="field-group">
+                <span>Deskripsi</span>
+                <input id="new-dokumentasi-desc" type="text" placeholder="Kegiatan yang didokumentasikan" required>
+              </label>
+              <label class="field-group" id="dokumentasi-video-group" hidden>
+                <span>URL Video</span>
+                <input id="new-dokumentasi-video" type="url" placeholder="https://.../*.mp4">
+              </label>
+            </div>
+            <button type="submit" class="tombol tombol-utama">Tambah Dokumentasi</button>
+          </form>
+
+          <div class="admin-list-wrap">
+            <h4>Daftar Dokumentasi</h4>
+            <div id="admin-dokumentasi-list" class="admin-ekskul-list"></div>
+          </div>
         </section>
       </section>
     </div>
   </main>
 
+  <script src="dokumentasi-data.js"></script>
   <script>
     const adminDefaultNotifications = [
       {
@@ -207,7 +339,7 @@
         message: 'Jumlah siswa terdaftar berhasil diperbarui.',
         time: 'Baru saja',
         read: false,
-        tone: 'success'
+        tone: 'sukses'
       },
       {
         id: 'admin-notif-2',
@@ -223,7 +355,7 @@
         message: 'Tim pelatih baru menambahkan pencapaian terbaru.',
         time: '1 jam lalu',
         read: true,
-        tone: 'warning'
+        tone: 'peringatan'
       }
     ];
 
@@ -253,35 +385,35 @@
       countEl.style.display = unread > 0 ? 'inline-flex' : 'none';
 
       listEl.innerHTML = notifications.map((item) => `
-        <div class="notification-item ${item.read ? 'read' : 'unread'}" data-id="${item.id}">
-          <div class="notification-indicator ${item.tone || 'info'}"></div>
-          <div class="notification-copy">
+        <div class="notifikasi-item ${item.read ? 'dibaca' : 'belum-dibaca'}" data-id="${item.id}">
+          <div class="notifikasi-indikator ${item.tone || 'info'}"></div>
+          <div class="notifikasi-teks">
             <strong>${item.title}</strong>
             <p>${item.message}</p>
             <span>${item.time}</span>
           </div>
-          <button class="notification-dismiss" type="button" data-id="${item.id}" aria-label="Hapus notifikasi">×</button>
+          <button class="notifikasi-tutup" type="button" data-id="${item.id}" aria-label="Hapus notifikasi">×</button>
         </div>
       `).join('');
     }
 
     function showAdminToast(title, message, tone = 'info') {
-      const existing = document.querySelector('.toast');
+      const existing = document.querySelector('.pesan-muncul');
       if (existing) existing.remove();
 
       const toast = document.createElement('div');
-      toast.className = `toast ${tone}`;
+      toast.className = `pesan-muncul ${tone}`;
       toast.innerHTML = `
-        <div class="toast-icon">${tone === 'success' ? '✓' : tone === 'warning' ? '!' : 'i'}</div>
+        <div class="ikon-pesan">${tone === 'sukses' ? '✓' : tone === 'peringatan' ? '!' : 'i'}</div>
         <div>
           <strong>${title}</strong>
           <p>${message}</p>
         </div>
       `;
       document.body.appendChild(toast);
-      setTimeout(() => toast.classList.add('show'), 40);
+      setTimeout(() => toast.classList.add('tampil'), 40);
       setTimeout(() => {
-        toast.classList.remove('show');
+        toast.classList.remove('tampil');
         setTimeout(() => toast.remove(), 300);
       }, 2600);
     }
@@ -301,7 +433,7 @@
       showAdminToast(title, message, tone);
     }
 
-    document.querySelectorAll('.dashboard-nav a[href^="#"]').forEach((link) => {
+    document.querySelectorAll('.navigasi-dasbor a[href^="#"]').forEach((link) => {
       link.addEventListener('click', (event) => {
         const targetId = link.getAttribute('href');
         const target = targetId ? document.querySelector(targetId) : null;
@@ -349,36 +481,336 @@
             <strong>${item.name}</strong>
             <p>${item.desc}</p>
           </div>
-          <button type="button" class="mini-delete" data-name="${item.name}">Hapus</button>
+          <button type="button" class="tombol-hapus" data-name="${item.name}">Hapus</button>
         </div>
       `).join('');
+    }
+
+    const applicantSearch = document.getElementById('applicant-search');
+    let applicantFilter = '';
+
+    function saveStudents(list) {
+      localStorage.setItem('students', JSON.stringify(list));
+      renderApplicantStatuses();
+      refreshStats();
     }
 
     function renderApplicantStatuses() {
       const list = document.getElementById('applicant-status-list');
       if (!list) return;
       const students = JSON.parse(localStorage.getItem('students') || '[]');
-      list.innerHTML = students.map((student) => `
+      const query = applicantFilter.toLowerCase();
+      const visible = students.filter((student) =>
+        !query || `${student.name || ''} ${student.nis || ''} ${student.kelas || ''}`.toLowerCase().includes(query)
+      );
+
+      if (!visible.length) {
+        list.innerHTML = '<p class="redup">Tidak ada data pendaftar.</p>';
+        return;
+      }
+
+      list.innerHTML = visible.map((student) => `
         <div class="admin-ekskul-item">
-          <div><strong>${student.name || '-'}</strong><p>NIS ${student.nis || '-'} | ${student.kelas || '-'}</p></div>
-          <span class="pill">${student.statusPendaftar || 'Menunggu Verifikasi'}</span>
+          <div>
+            <strong>${student.name || '-'}</strong>
+            <p>NIS ${student.nis || '-'} | ${student.kelas || '-'} | ${student.email || '-'}</p>
+          </div>
+          <div class="aksi-pendaftar">
+            <span class="lencana ${student.statusPendaftar === 'Ditolak' ? 'ditolak' : student.statusPendaftar === 'Disetujui' ? 'disetujui' : ''}">${student.statusPendaftar || 'Menunggu Verifikasi'}</span>
+            <button type="button" class="tombol-setujui" data-approve="${student.nis}">Setujui</button>
+            <button type="button" class="tombol-tolak" data-reject="${student.nis}">Tolak</button>
+            <button type="button" class="tombol-hapus" data-remove-student="${student.nis}">Hapus</button>
+          </div>
         </div>
-      `).join('') || '<p class="muted">Belum ada data pendaftar.</p>';
+      `).join('');
     }
+
+    if (applicantSearch) {
+      applicantSearch.addEventListener('input', function () {
+        applicantFilter = this.value.trim();
+        renderApplicantStatuses();
+      });
+    }
+
+    document.getElementById('applicant-status-list')?.addEventListener('click', function (event) {
+      const approveBtn = event.target.closest('[data-approve]');
+      const rejectBtn = event.target.closest('[data-reject]');
+      const removeBtn = event.target.closest('[data-remove-student]');
+      if (!approveBtn && !rejectBtn && !removeBtn) return;
+
+      const students = JSON.parse(localStorage.getItem('students') || '[]');
+      const target = approveBtn ? approveBtn.dataset.approve : rejectBtn ? rejectBtn.dataset.reject : removeBtn.dataset.removeStudent;
+      const index = students.findIndex((student) => String(student.nis) === String(target));
+      if (index === -1) return;
+
+      if (approveBtn) {
+        students[index].statusPendaftar = 'Disetujui';
+        addAdminNotification({
+          title: 'Pendaftar disetujui',
+          message: `${students[index].name} dinyatakan disetujui.`,
+          tone: 'sukses',
+          time: 'Baru saja'
+        });
+      } else if (rejectBtn) {
+        students[index].statusPendaftar = 'Ditolak';
+        addAdminNotification({
+          title: 'Pendaftar ditolak',
+          message: `${students[index].name} ditolak verifikasi.`,
+          tone: 'peringatan',
+          time: 'Baru saja'
+        });
+      } else {
+        const removed = students.splice(index, 1)[0];
+        addAdminNotification({
+          title: 'Data siswa dihapus',
+          message: `${removed.name || 'Siswa'} dihapus dari data pendaftar.`,
+          tone: 'peringatan',
+          time: 'Baru saja'
+        });
+      }
+      saveStudents(students);
+    });
+
+    document.getElementById('export-students')?.addEventListener('click', function () {
+      const students = JSON.parse(localStorage.getItem('students') || '[]');
+      if (!students.length) {
+        alert('Belum ada data untuk diexport.');
+        return;
+      }
+      const escapeCell = (value) => `"${String(value ?? '').replace(/"/g, '""')}"`;
+      const header = ['NIS', 'Nama', 'Kelas', 'Email', 'Status'];
+      const rows = students.map((student) => [student.nis, student.name, student.kelas, student.email, student.statusPendaftar || 'Menunggu Verifikasi'].map(escapeCell).join(','));
+      const csv = '﻿' + [header.map(escapeCell).join(','), ...rows].join('\n');
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'data-siswa-eskul.csv';
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      URL.revokeObjectURL(url);
+      addAdminNotification({
+        title: 'Export berhasil',
+        message: 'Data siswa diunduh sebagai file CSV.',
+        tone: 'sukses',
+        time: 'Baru saja'
+      });
+    });
+
+    function refreshStats() {
+      const statStudents = document.getElementById('stat-students');
+      const statEkskul = document.getElementById('stat-ekskul');
+      const statPrestasi = document.getElementById('stat-prestasi');
+      if (statStudents) statStudents.textContent = JSON.parse(localStorage.getItem('students') || '[]').length;
+      if (statEkskul) statEkskul.textContent = getEkskulList().length;
+      if (statPrestasi) statPrestasi.textContent = JSON.parse(localStorage.getItem('ex_prestasi') || '[]').length;
+    }
+
+    function loadList(key) {
+      try {
+        return JSON.parse(localStorage.getItem(key) || '[]');
+      } catch (error) {
+        return [];
+      }
+    }
+
+    function saveList(key, list) {
+      localStorage.setItem(key, JSON.stringify(list));
+    }
+
+    function renderAdminPrestasiList() {
+      const list = document.getElementById('admin-prestasi-list');
+      if (!list) return;
+      const items = loadList('ex_prestasi');
+      list.innerHTML = items.map((item, index) => `
+        <div class="admin-ekskul-item">
+          <div>
+            <strong>${item.title || '-'}${item.year ? ` (${item.year})` : ''}</strong>
+            <p>${item.desc || '-'}</p>
+          </div>
+          <button type="button" class="tombol-hapus" data-prestasi-index="${index}">Hapus</button>
+        </div>
+      `).join('') || '<p class="redup">Belum ada data prestasi.</p>';
+    }
+
+    document.getElementById('admin-prestasi-form')?.addEventListener('submit', function (event) {
+      event.preventDefault();
+      const title = document.getElementById('new-prestasi-title').value.trim();
+      const year = document.getElementById('new-prestasi-year').value.trim();
+      const desc = document.getElementById('new-prestasi-desc').value.trim();
+      if (!title || !year || !desc) return;
+
+      const items = loadList('ex_prestasi');
+      items.push({ title, year, desc });
+      saveList('ex_prestasi', items);
+      this.reset();
+      renderAdminPrestasiList();
+      refreshStats();
+      addAdminNotification({
+        title: 'Prestasi ditambahkan',
+        message: `${title} (${year}) masuk ke daftar prestasi.`,
+        tone: 'sukses',
+        time: 'Baru saja'
+      });
+    });
+
+    document.getElementById('admin-prestasi-list')?.addEventListener('click', function (event) {
+      const button = event.target.closest('[data-prestasi-index]');
+      if (!button) return;
+      const items = loadList('ex_prestasi');
+      const removed = items.splice(Number(button.dataset.prestasiIndex), 1)[0];
+      saveList('ex_prestasi', items);
+      renderAdminPrestasiList();
+      refreshStats();
+      addAdminNotification({
+        title: 'Prestasi dihapus',
+        message: `${removed ? removed.title : 'Data prestasi'} dihapus.`,
+        tone: 'peringatan',
+        time: 'Baru saja'
+      });
+    });
+
+    function renderAdminJadwalList() {
+      const list = document.getElementById('admin-jadwal-list');
+      if (!list) return;
+      const items = loadList('ex_jadwal');
+      list.innerHTML = items.map((item, index) => `
+        <div class="admin-ekskul-item">
+          <div>
+            <strong>${item.ekskul || '-'} - ${item.hari || '-'}</strong>
+            <p>${item.waktu || '-'} | ${item.lokasi || '-'}</p>
+          </div>
+          <button type="button" class="tombol-hapus" data-jadwal-index="${index}">Hapus</button>
+        </div>
+      `).join('') || '<p class="redup">Belum ada data jadwal.</p>';
+    }
+
+    function populateJadwalEkskulSelect() {
+      const select = document.getElementById('new-jadwal-ekskul');
+      if (!select) return;
+      select.innerHTML = getEkskulList().map((item) => `<option value="${item.name}">${item.name}</option>`).join('');
+    }
+
+    document.getElementById('admin-jadwal-form')?.addEventListener('submit', function (event) {
+      event.preventDefault();
+      const item = {
+        hari: document.getElementById('new-jadwal-hari').value,
+        ekskul: document.getElementById('new-jadwal-ekskul').value,
+        waktu: document.getElementById('new-jadwal-waktu').value.trim(),
+        lokasi: document.getElementById('new-jadwal-lokasi').value.trim()
+      };
+      if (!item.ekskul || !item.waktu) return;
+
+      const items = loadList('ex_jadwal');
+      items.push(item);
+      saveList('ex_jadwal', items);
+      this.reset();
+      renderAdminJadwalList();
+      addAdminNotification({
+        title: 'Jadwal ditambahkan',
+        message: `${item.ekskul} dijadwalkan hari ${item.hari}, pukul ${item.waktu}.`,
+        tone: 'sukses',
+        time: 'Baru saja'
+      });
+    });
+
+    document.getElementById('admin-jadwal-list')?.addEventListener('click', function (event) {
+      const button = event.target.closest('[data-jadwal-index]');
+      if (!button) return;
+      const items = loadList('ex_jadwal');
+      const removed = items.splice(Number(button.dataset.jadwalIndex), 1)[0];
+      saveList('ex_jadwal', items);
+      renderAdminJadwalList();
+      addAdminNotification({
+        title: 'Jadwal dihapus',
+        message: removed ? `Jadwal ${removed.ekskul} (${removed.hari}) dihapus.` : 'Jadwal dihapus.',
+        tone: 'peringatan',
+        time: 'Baru saja'
+      });
+    });
+
+    function renderAdminDokumentasiList() {
+      const list = document.getElementById('admin-dokumentasi-list');
+      if (!list) return;
+      const items = loadList('ex_dokumentasi');
+      list.innerHTML = items.map((item, index) => `
+        <div class="admin-ekskul-item">
+          <div>
+            <strong>[${item.type === 'video' ? 'Video' : 'Foto'}] ${item.title || '-'}</strong>
+            <p>${item.date || '-'} | ${item.desc || '-'}</p>
+          </div>
+          <button type="button" class="tombol-hapus" data-dokumentasi-index="${index}">Hapus</button>
+        </div>
+      `).join('') || '<p class="redup">Belum ada data dokumentasi. Tambahkan lewat form di atas.</p>';
+    }
+
+    const dokumentasiType = document.getElementById('new-dokumentasi-type');
+    const dokumentasiVideoGroup = document.getElementById('dokumentasi-video-group');
+    if (dokumentasiType && dokumentasiVideoGroup) {
+      dokumentasiType.addEventListener('change', function () {
+        dokumentasiVideoGroup.hidden = this.value !== 'video';
+        document.getElementById('new-dokumentasi-video').required = this.value === 'video';
+      });
+    }
+
+    document.getElementById('admin-dokumentasi-form')?.addEventListener('submit', function (event) {
+      event.preventDefault();
+      const type = document.getElementById('new-dokumentasi-type').value;
+      const item = {
+        type,
+        title: document.getElementById('new-dokumentasi-title').value.trim(),
+        desc: document.getElementById('new-dokumentasi-desc').value.trim(),
+        date: document.getElementById('new-dokumentasi-date').value.trim(),
+        img: document.getElementById('new-dokumentasi-img').value.trim()
+      };
+      if (type === 'video') item.video = document.getElementById('new-dokumentasi-video').value.trim();
+      if (!item.title || !item.desc || !item.date || !item.img || (type === 'video' && !item.video)) return;
+
+      const items = loadList('ex_dokumentasi');
+      items.unshift(item);
+      saveList('ex_dokumentasi', items);
+      this.reset();
+      if (dokumentasiVideoGroup) dokumentasiVideoGroup.hidden = true;
+      renderAdminDokumentasiList();
+      addAdminNotification({
+        title: 'Dokumentasi ditambahkan',
+        message: `${item.title} masuk ke galeri (${type === 'video' ? 'video' : 'foto'}).`,
+        tone: 'sukses',
+        time: 'Baru saja'
+      });
+    });
+
+    document.getElementById('admin-dokumentasi-list')?.addEventListener('click', function (event) {
+      const button = event.target.closest('[data-dokumentasi-index]');
+      if (!button) return;
+      const items = loadList('ex_dokumentasi');
+      const removed = items.splice(Number(button.dataset.dokumentasiIndex), 1)[0];
+      saveList('ex_dokumentasi', items);
+      renderAdminDokumentasiList();
+      addAdminNotification({
+        title: 'Dokumentasi dihapus',
+        message: removed ? `${removed.title} dihapus dari galeri.` : 'Dokumentasi dihapus.',
+        tone: 'peringatan',
+        time: 'Baru saja'
+      });
+    });
 
     const adminData = JSON.parse(sessionStorage.getItem('loggedInAdmin') || 'null');
     if (!adminData) {
       window.location.href = 'admin-login.html';
     } else {
       document.getElementById('admin-user-name').textContent = 'Halo, ' + (adminData.name || 'Admin');
-      const students = JSON.parse(localStorage.getItem('students') || '[]');
-      const ekskuls = getEkskulList();
-      const prestasi = JSON.parse(localStorage.getItem('ex_prestasi') || '[]');
-      document.getElementById('stat-students').textContent = students.length;
-      document.getElementById('stat-ekskul').textContent = ekskuls.length;
-      document.getElementById('stat-prestasi').textContent = prestasi.length;
+      if (!loadList('ex_dokumentasi').length && window.DEFAULT_DOKUMENTASI) {
+        saveList('ex_dokumentasi', window.DEFAULT_DOKUMENTASI);
+      }
+      refreshStats();
       renderAdminEkskulList();
       renderApplicantStatuses();
+      renderAdminPrestasiList();
+      renderAdminJadwalList();
+      renderAdminDokumentasiList();
+      populateJadwalEkskulSelect();
     }
 
     const adminEkskulSearch = document.getElementById('admin-ekskul-search');
@@ -406,26 +838,28 @@
       this.reset();
       renderAdminEkskulList(adminEkskulSearch ? adminEkskulSearch.value : '');
       document.getElementById('stat-ekskul').textContent = existing.length;
+      populateJadwalEkskulSelect();
       addAdminNotification({
         title: 'Ekskul baru ditambahkan',
         message: `${name} berhasil ditambahkan ke daftar ekskul.`,
-        tone: 'success',
+        tone: 'sukses',
         time: 'Baru saja'
       });
     });
 
     document.getElementById('admin-ekskul-list')?.addEventListener('click', function (event) {
-      const button = event.target.closest('.mini-delete');
+      const button = event.target.closest('.tombol-hapus');
       if (!button) return;
       const name = button.dataset.name;
       const list = getEkskulList().filter((item) => item.name !== name);
       localStorage.setItem('ex_ekskul', JSON.stringify(list));
       renderAdminEkskulList(adminEkskulSearch ? adminEkskulSearch.value : '');
       document.getElementById('stat-ekskul').textContent = list.length;
+      populateJadwalEkskulSelect();
       addAdminNotification({
         title: 'Ekskul dihapus',
         message: `${name} telah dihapus dari daftar ekskul.`,
-        tone: 'warning',
+        tone: 'peringatan',
         time: 'Baru saja'
       });
     });
@@ -435,8 +869,8 @@
     const adminClearNotif = document.getElementById('admin-clear-notif');
 
     function closeAllNotificationPanels() {
-      document.querySelectorAll('.notification-panel').forEach((otherPanel) => {
-        otherPanel.classList.add('hidden');
+      document.querySelectorAll('.notifikasi-panel').forEach((otherPanel) => {
+        otherPanel.classList.add('tersembunyi');
       });
     }
 
@@ -445,11 +879,11 @@
         event.preventDefault();
         event.stopPropagation();
 
-        const isOpen = !adminNotificationPanel.classList.contains('hidden');
+        const isOpen = !adminNotificationPanel.classList.contains('tersembunyi');
         closeAllNotificationPanels();
 
         if (!isOpen) {
-          adminNotificationPanel.classList.remove('hidden');
+          adminNotificationPanel.classList.remove('tersembunyi');
           adminNotificationTrigger.setAttribute('aria-expanded', 'true');
         } else {
           adminNotificationTrigger.setAttribute('aria-expanded', 'false');
@@ -465,9 +899,9 @@
     }
 
     document.getElementById('admin-notification-list')?.addEventListener('click', function (event) {
-      const dismissBtn = event.target.closest('.notification-dismiss');
+      const dismissBtn = event.target.closest('.notifikasi-tutup');
       if (!dismissBtn) {
-        const item = event.target.closest('.notification-item');
+        const item = event.target.closest('.notifikasi-item');
         if (!item) return;
         const notifications = getAdminNotifications().map((entry) => entry.id === item.dataset.id ? { ...entry, read: true } : entry);
         saveAdminNotifications(notifications);
@@ -486,8 +920,8 @@
       const clickedInside = adminNotificationPanel.contains(target);
       const clickedTrigger = adminNotificationTrigger && (adminNotificationTrigger === target || adminNotificationTrigger.contains(target));
 
-      if (!clickedInside && !clickedTrigger && !adminNotificationPanel.classList.contains('hidden')) {
-        adminNotificationPanel.classList.add('hidden');
+      if (!clickedInside && !clickedTrigger && !adminNotificationPanel.classList.contains('tersembunyi')) {
+        adminNotificationPanel.classList.add('tersembunyi');
         if (adminNotificationTrigger) adminNotificationTrigger.setAttribute('aria-expanded', 'false');
       }
     });

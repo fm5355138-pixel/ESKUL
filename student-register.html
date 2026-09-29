@@ -19,25 +19,25 @@
             <h1>TARUNA BANGSA</h1>
           </div>
         </div>
-        <p class="muted">Pendaftaran Siswa Baru</p>
+        <p class="redup">Pendaftaran Siswa Baru</p>
       </div>
 
       <form id="student-register" class="login-form register-form">
         <div id="register-error" class="error-box" role="alert" style="display:none"></div>
 
-        <div class="form-group">
-          <input id="register-name" name="name" required class="form-input" autocomplete="name" />
-          <label for="register-name" class="form-label">Nama Lengkap</label>
+        <div class="kelompok-formulir">
+          <input id="register-name" name="name" required class="input-formulir" autocomplete="name" />
+          <label for="register-name" class="label-formulir">Nama Lengkap</label>
         </div>
 
-        <div class="form-grid">
-          <div class="form-group">
-            <input id="register-nis" name="nis" required class="form-input" autocomplete="username" />
-            <label for="register-nis" class="form-label">NIS</label>
+        <div class="kisi-formulir">
+          <div class="kelompok-formulir">
+            <input id="register-nis" name="nis" required class="input-formulir" autocomplete="username" />
+            <label for="register-nis" class="label-formulir">NIS</label>
           </div>
 
-          <div class="form-group">
-            <select id="register-kelas" name="kelas" required class="form-input select-input">
+          <div class="kelompok-formulir">
+            <select id="register-kelas" name="kelas" required class="input-formulir select-input">
               <option value="" selected disabled></option>
               <option value="X AKL 1">X AKL 1</option>
               <option value="X AKL 2">X AKL 2</option>
@@ -52,18 +52,18 @@
               <option value="XII RPL 1">XII RPL 1</option>
               <option value="XII RPL 2">XII RPL 2</option>
             </select>
-            <label for="register-kelas" class="form-label">Kelas</label>
+            <label for="register-kelas" class="label-formulir">Kelas</label>
           </div>
         </div>
 
-        <div class="form-group">
-          <input id="register-email" name="email" type="email" required class="form-input" autocomplete="email" />
-          <label for="register-email" class="form-label">Email</label>
+        <div class="kelompok-formulir">
+          <input id="register-email" name="email" type="email" required class="input-formulir" autocomplete="email" />
+          <label for="register-email" class="label-formulir">Email</label>
         </div>
 
-        <div class="form-group">
-          <input id="register-password" name="password" type="password" required class="form-input" autocomplete="new-password" />
-          <label for="register-password" class="form-label">Password</label>
+        <div class="kelompok-formulir">
+          <input id="register-password" name="password" type="password" required class="input-formulir" autocomplete="new-password" />
+          <label for="register-password" class="label-formulir">Password</label>
         </div>
 
         <label class="checkbox register-check">
@@ -71,7 +71,7 @@
           Saya menyetujui syarat dan ketentuan pendaftaran.
         </label>
 
-        <button class="btn btn-primary full-width" type="submit">Daftar Sekarang</button>
+        <button class="tombol tombol-utama full-width" type="submit">Daftar Sekarang</button>
 
         <div class="login-links">
           <a href="student-login.html" class="link-btn secondary-link">← Sudah punya akun</a>
@@ -140,12 +140,12 @@
       }
     });
 
-    document.querySelectorAll('.form-input').forEach((input) => {
-      input.addEventListener('focus', () => input.parentElement.classList.add('focus'));
+    document.querySelectorAll('.input-formulir').forEach((input) => {
+      input.addEventListener('focus', () => input.parentElement.classList.add('fokus'));
       input.addEventListener('blur', () => {
-        if (!input.value) input.parentElement.classList.remove('focus');
+        if (!input.value) input.parentElement.classList.remove('fokus');
       });
-      if (input.value) input.parentElement.classList.add('focus');
+      if (input.value) input.parentElement.classList.add('fokus');
     });
   </script>
 </body>

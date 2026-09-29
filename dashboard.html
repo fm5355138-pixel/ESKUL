@@ -9,9 +9,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
-<body class="dashboard-page">
-  <header class="dashboard-header">
-    <div class="container dashboard-topbar">
+<body class="halaman-dasbor">
+  <header class="kepala-dasbor">
+    <div class="container bilah-atas-dasbor">
       <div class="brand brand-dashboard">
         <span class="brand-badge">SMK Taruna Bangsa</span>
         <div>
@@ -20,31 +20,31 @@
         </div>
       </div>
 
-      <div class="dashboard-actions">
-        <div class="notification-wrap">
-          <button class="notification-trigger" id="notification-trigger" type="button" aria-label="Buka notifikasi">
+      <div class="aksi-dasbor">
+        <div class="notifikasi-bungkus">
+          <button class="notifikasi-pemicu" id="notification-trigger" type="button" aria-label="Buka notifikasi">
             <span aria-hidden="true">🔔</span>
-            <span class="notification-count" id="notification-count">0</span>
+            <span class="notifikasi-jumlah" id="notification-count">0</span>
           </button>
-          <div class="notification-panel hidden" id="notification-panel">
-            <div class="notification-header">
+          <div class="notifikasi-panel tersembunyi" id="notification-panel">
+            <div class="notifikasi-kepala">
               <strong>Notifikasi</strong>
-              <button class="clear-notif" id="clear-notif" type="button">Bersihkan</button>
+              <button class="bersih-notifikasi" id="clear-notif" type="button">Bersihkan</button>
             </div>
-            <div id="notification-list" class="notification-list"></div>
+            <div id="notification-list" class="notifikasi-daftar"></div>
           </div>
         </div>
 
-        <div class="user-status user-status-large">
-          <span class="user-chip" id="dashboard-user-name">Halo, Siswa</span>
+        <div class="status-pengguna status-pengguna-besar">
+          <span class="chip-pengguna" id="dashboard-user-name">Halo, Siswa</span>
         </div>
-        <button class="logout-btn" id="dashboard-logout" type="button">Keluar</button>
+        <button class="tombol-keluar" id="dashboard-logout" type="button">Keluar</button>
       </div>
     </div>
   </header>
 
-  <main class="dashboard-main">
-    <div class="container dashboard-grid">
+  <main class="utama-dasbor">
+    <div class="container kisi-dasbor">
       <aside class="sidebar-card">
         <div class="sidebar-brand">
           <div class="school-logo small-logo" aria-label="Logo SMK Taruna Bangsa">
@@ -56,8 +56,8 @@
           </div>
         </div>
 
-        <nav class="dashboard-nav">
-          <a href="#overview" class="active">Overview</a>
+        <nav class="navigasi-dasbor">
+          <a href="#overview" class="aktif">Overview</a>
           <a href="#ekskul-portal">Ekskul</a>
           <a href="jadwal.html">Jadwal</a>
           <a href="prestasi.html">Prestasi</a>
@@ -65,20 +65,20 @@
         </nav>
       </aside>
 
-      <section class="dashboard-content">
+      <section class="isi-dasbor">
         <div class="welcome-card" id="overview">
           <div>
             <span class="sub-title">Selamat datang</span>
             <h2 id="welcome-name">Siswa</h2>
           </div>
           <div class="quick-actions">
-            <a href="jadwal.html" class="btn btn-primary">Lihat Jadwal</a>
-            <a href="index.html" class="btn btn-secondary">Kembali ke Beranda</a>
+            <a href="jadwal.html" class="tombol tombol-utama">Lihat Jadwal</a>
+            <a href="index.html" class="tombol tombol-sekunder">Kembali ke Beranda</a>
           </div>
         </div>
 
         <div class="feature-row">
-          <div class="feature-badge success">3 notifikasi baru</div>
+          <div class="feature-badge sukses">3 notifikasi baru</div>
           <div class="feature-badge neutral">Kehadiran minggu ini 92%</div>
           <div class="feature-badge accent">Ekskul siap ditindaklanjuti</div>
         </div>
@@ -102,7 +102,7 @@
           <article class="info-panel glass-panel timeline-panel">
             <div class="panel-head">
               <h3>Aktivitas Terbaru</h3>
-              <span class="pill">Live</span>
+              <span class="lencana">Live</span>
             </div>
             <ul class="timeline-list">
               <li>
@@ -132,7 +132,7 @@
           <article class="info-panel glass-panel progress-panel">
             <div class="panel-head">
               <h3>Progress Aktivitas</h3>
-              <span class="pill subtle">Update</span>
+              <span class="lencana halus">Update</span>
             </div>
             <div class="progress-stack">
               <div class="progress-row">
@@ -154,7 +154,7 @@
           <article class="info-panel glass-panel quick-actions-panel">
             <div class="panel-head">
               <h3>Quick Actions</h3>
-              <span class="pill subtle">Akses cepat</span>
+              <span class="lencana halus">Akses cepat</span>
             </div>
             <div class="quick-chip-grid">
               <a href="jadwal.html" class="quick-action-item">
@@ -179,25 +179,25 @@
           <article class="info-panel glass-panel notifications-panel">
             <div class="panel-head">
               <h3>Notifikasi</h3>
-              <span class="pill">3 baru</span>
+              <span class="lencana">3 baru</span>
             </div>
-            <ul class="notif-list">
+            <ul class="daftar-notifikasi">
               <li>
-                <span class="notif-dot green"></span>
+                <span class="titik-notifikasi green"></span>
                 <div>
                   <strong>Presensi masuk dibuka</strong>
                   <p>Silakan cek status kehadiran hari ini.</p>
                 </div>
               </li>
               <li>
-                <span class="notif-dot blue"></span>
+                <span class="titik-notifikasi blue"></span>
                 <div>
                   <strong>Latihan ekskul dimulai</strong>
                   <p>Futsal hadir pukul 15.00 WIB.</p>
                 </div>
               </li>
               <li>
-                <span class="notif-dot orange"></span>
+                <span class="titik-notifikasi orange"></span>
                 <div>
                   <strong>Pengumuman lomba</strong>
                   <p>Pencak silat nasional antar pelajar.</p>
@@ -222,7 +222,7 @@
         <section id="ekskul-portal" class="detail-panel glass-panel">
           <div class="panel-head">
             <h3>Ekskul Pilihan</h3>
-            <span class="pill subtle">8 Program</span>
+            <span class="lencana halus">8 Program</span>
           </div>
           <div class="search-box-wrap">
             <input id="student-search" type="search" placeholder="Cari ekskul atau kegiatan..." aria-label="Cari ekskul" />
@@ -241,7 +241,7 @@
         message: 'Silakan cek status kehadiran hari ini.',
         time: 'Baru saja',
         read: false,
-        tone: 'success'
+        tone: 'sukses'
       },
       {
         id: 'notif-2',
@@ -257,7 +257,7 @@
         message: 'Pencak silat nasional antar pelajar.',
         time: '1 jam lalu',
         read: true,
-        tone: 'warning'
+        tone: 'peringatan'
       }
     ];
 
@@ -298,14 +298,14 @@
       countEl.style.display = unreadCount > 0 ? 'inline-flex' : 'none';
 
       listEl.innerHTML = notifications.map((item) => `
-        <div class="notification-item ${item.read ? 'read' : 'unread'}" data-id="${item.id}">
-          <div class="notification-indicator ${item.tone || 'info'}"></div>
-          <div class="notification-copy">
+        <div class="notifikasi-item ${item.read ? 'dibaca' : 'belum-dibaca'}" data-id="${item.id}">
+          <div class="notifikasi-indikator ${item.tone || 'info'}"></div>
+          <div class="notifikasi-teks">
             <strong>${item.title}</strong>
             <p>${item.message}</p>
             <span>${item.time}</span>
           </div>
-          <button class="notification-dismiss" type="button" data-id="${item.id}" aria-label="Hapus notifikasi">×</button>
+          <button class="notifikasi-tutup" type="button" data-id="${item.id}" aria-label="Hapus notifikasi">×</button>
         </div>
       `).join('');
     }
@@ -326,22 +326,22 @@
     }
 
     function showToast(title, message, tone = 'info') {
-      const existing = document.querySelector('.toast');
+      const existing = document.querySelector('.pesan-muncul');
       if (existing) existing.remove();
 
       const toast = document.createElement('div');
-      toast.className = `toast ${tone}`;
+      toast.className = `pesan-muncul ${tone}`;
       toast.innerHTML = `
-        <div class="toast-icon">${tone === 'success' ? '✓' : tone === 'warning' ? '!' : 'i'}</div>
+        <div class="ikon-pesan">${tone === 'sukses' ? '✓' : tone === 'peringatan' ? '!' : 'i'}</div>
         <div>
           <strong>${title}</strong>
           <p>${message}</p>
         </div>
       `;
       document.body.appendChild(toast);
-      setTimeout(() => toast.classList.add('show'), 50);
+      setTimeout(() => toast.classList.add('tampil'), 50);
       setTimeout(() => {
-        toast.classList.remove('show');
+        toast.classList.remove('tampil');
         setTimeout(() => toast.remove(), 300);
       }, 2600);
     }
@@ -379,7 +379,7 @@
       const grid = document.getElementById('student-ekskul-grid');
       if (!grid) return;
       const list = getEkskulList();
-      const countPill = document.querySelector('#ekskul-portal .pill.subtle');
+      const countPill = document.querySelector('#ekskul-portal .lencana.halus');
       if (countPill) {
         countPill.textContent = `${list.length} Program`;
       }
@@ -408,29 +408,29 @@
         const icon = iconMap[item.name] || '✨';
 
         return `
-          <article class="mini-ekskul-card reveal-card" style="--card-accent:${accent}">
-            <div class="mini-avatar" aria-label="Icon ${item.name}">${icon}</div>
-            <div class="mini-body">
+          <article class="kartu-ekskul-mini kartu-muncul" style="--card-accent:${accent}">
+            <div class="avatar-mini" aria-label="Icon ${item.name}">${icon}</div>
+            <div class="isi-mini">
               <h4>${item.name}</h4>
               <p>${item.desc}</p>
             </div>
-            <a class="mini-link" href="ekskul-detail.html?name=${encodeURIComponent(item.name)}">Lihat detail</a>
+            <a class="tautan-mini" href="ekskul-detail.html?name=${encodeURIComponent(item.name)}">Lihat detail</a>
           </article>
         `;
       }).join('');
 
-      const cards = document.querySelectorAll('.reveal-card');
+      const cards = document.querySelectorAll('.kartu-muncul');
       if (!cards.length) return;
 
       if (!('IntersectionObserver' in window)) {
-        cards.forEach((card) => card.classList.add('visible'));
+        cards.forEach((card) => card.classList.add('terlihat'));
         return;
       }
 
       const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
+            entry.target.classList.add('terlihat');
             observer.unobserve(entry.target);
           }
         });
@@ -442,7 +442,7 @@
     if (searchInput) {
       searchInput.addEventListener('input', function () {
         const term = this.value.trim().toLowerCase();
-        const cards = document.querySelectorAll('.mini-ekskul-card');
+        const cards = document.querySelectorAll('.kartu-ekskul-mini');
         cards.forEach((card) => {
           const text = card.textContent.toLowerCase();
           const match = !term || text.includes(term);
@@ -480,8 +480,8 @@
     const clearBtn = document.getElementById('clear-notif');
 
     function closeAllNotificationPanels() {
-      document.querySelectorAll('.notification-panel').forEach((otherPanel) => {
-        otherPanel.classList.add('hidden');
+      document.querySelectorAll('.notifikasi-panel').forEach((otherPanel) => {
+        otherPanel.classList.add('tersembunyi');
       });
     }
 
@@ -490,11 +490,11 @@
         event.preventDefault();
         event.stopPropagation();
 
-        const isOpen = !panel.classList.contains('hidden');
+        const isOpen = !panel.classList.contains('tersembunyi');
         closeAllNotificationPanels();
 
         if (!isOpen) {
-          panel.classList.remove('hidden');
+          panel.classList.remove('tersembunyi');
           trigger.setAttribute('aria-expanded', 'true');
         } else {
           trigger.setAttribute('aria-expanded', 'false');
@@ -510,9 +510,9 @@
     }
 
     document.getElementById('notification-list')?.addEventListener('click', function (event) {
-      const dismissBtn = event.target.closest('.notification-dismiss');
+      const dismissBtn = event.target.closest('.notifikasi-tutup');
       if (!dismissBtn) {
-        const item = event.target.closest('.notification-item');
+        const item = event.target.closest('.notifikasi-item');
         if (!item) return;
         const notifications = getNotifications().map((entry) => entry.id === item.dataset.id ? { ...entry, read: true } : entry);
         saveNotifications(notifications);
@@ -531,14 +531,14 @@
       const clickedInsidePanel = panel.contains(target);
       const clickedTrigger = trigger && (trigger === target || trigger.contains(target));
 
-      if (!clickedInsidePanel && !clickedTrigger && !panel.classList.contains('hidden')) {
-        panel.classList.add('hidden');
+      if (!clickedInsidePanel && !clickedTrigger && !panel.classList.contains('tersembunyi')) {
+        panel.classList.add('tersembunyi');
         if (trigger) trigger.setAttribute('aria-expanded', 'false');
       }
     });
 
     renderNotifications();
-    addNotification({ title: 'Selamat datang', message: 'Portal siswa siap digunakan hari ini.', tone: 'success', time: 'Sekarang' });
+    addNotification({ title: 'Selamat datang', message: 'Portal siswa siap digunakan hari ini.', tone: 'sukses', time: 'Sekarang' });
 
     document.getElementById('dashboard-logout').addEventListener('click', function () {
       sessionStorage.removeItem('loggedInStudent');

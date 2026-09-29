@@ -142,7 +142,7 @@ File mungkin memiliki file `dokumentasikegiatan.html` yang kosong dan tidak berf
 - **Notifikasi & toast** real-time.
 - **Pencarian ekskul** (siswa & admin).
 - **Responsif & mobile**: panel slide-out hijau di kiri, hamburger menu.
-- **Animasi**: blobs hero, parallax scroll, fade-up (IntersectionObserver), reveal-card, marquee, glassmorphism.
+- **Animasi**: blobs sorotan, parallax scroll, muncul-halus (IntersectionObserver), kartu-muncul, marquee, glassmorphism.
 - **Aksesibilitas**: `aria-label`, `prefers-reduced-motion` dihormati.
 - **Anti-XSS**: fungsi `escapeHtml()` untuk data yang dirender dari input pengguna.
 
@@ -260,5 +260,5 @@ Font utama: **Plus Jakarta Sans** (Google Fonts).
 
 - `dokumentasikegiatan.html` masih kosong dan link dokumentasi di `index.html` mengarah ke `dokumentasi.html` yang **belum tersedia** — perlu dibuat.
 - Kredensial admin (`admin`/`admin123`) masih hardcoded di JavaScript — sebaiknya dipindah ke backend/auth untuk produksi.
-- Beranda referensi beberapa pemilih CSS lama (mis. `.ekskul-grid`, `.parent-section`) yang tidak dipakai di file HTML saat ini — kandidat pembersihan.
+- Beranda referensi beberapa pemilih CSS lama (mis. `.kisi-ekskul`, `.parent-section`) yang tidak dipakai di file HTML saat ini — kandidat pembersihan.
 - Pastikan menjalankan secara **lokal (file://)** — tidak diperlukan build step atau server khusus (kecuali efek browser pada localStorage saat dibuka via `file://` di beberapa browser).

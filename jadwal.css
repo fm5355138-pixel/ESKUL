@@ -1,31 +1,31 @@
 /* HALAMAN JADWAL - TAMPILAN RAPI & PRESISI */
-.page-content {
+.isi-halaman {
   padding: 50px 0;
   background-color: #f8fafc;
   min-height: calc(100vh - 160px);
 }
 
-.page-header {
+.kepala-halaman {
   text-align: center;
   max-width: 600px;
   margin: 0 auto 35px auto;
 }
 
-.page-header .sub-title {
+.kepala-halaman .sub-title {
   font-size: 0.8rem;
   font-weight: 700;
   color: var(--primary, #4f46e5);
   letter-spacing: 1.5px;
 }
 
-.page-header h2 {
+.kepala-halaman h2 {
   font-size: 2rem;
   color: var(--dark, #0f172a);
   margin: 8px 0;
   font-weight: 800;
 }
 
-.page-header p {
+.kepala-halaman p {
   color: var(--text-muted, #64748b);
   font-size: 0.95rem;
 }
@@ -82,7 +82,7 @@
 }
 
 /* STYLING KOMPONEN DI DALAM TABEL */
-.badge-day {
+.lencana-hari {
   display: inline-block;
   background-color: #e2e8f0;
   color: var(--dark, #0f172a);
@@ -94,17 +94,17 @@
   text-align: center;
 }
 
-.badge-day.highlight {
+.lencana-hari.highlight {
   background-color: #eef2ff;
   color: var(--primary, #4f46e5);
 }
 
-.ekskul-name {
+.nama-ekskul {
   font-weight: 700;
   color: var(--dark, #0f172a);
 }
 
-.time-text {
+.teks-waktu {
   font-weight: 500;
   color: #475569;
 }
@@ -124,13 +124,13 @@
     padding: 15px 0;
   }
   
-  .header-right {
+  .menu-kanan {
     flex-direction: column;
     gap: 15px;
     width: 100%;
   }
 
-  .main-nav {
+  .navigasi-utama {
     gap: 15px;
   }
 
@@ -141,7 +141,7 @@
 }
 
 /* ================= RESPONSIVE MOBILE DRAWER ================= */
-.menu-toggle {
+.tombol-menu {
   display: none;
   background: none;
   border: none;
@@ -151,7 +151,7 @@
   padding: 4px;
 }
 
-.mobile-overlay {
+.tirai-ponsel {
   display: none;
   position: fixed;
   top: 0;
@@ -163,7 +163,7 @@
   z-index: 1001;
 }
 
-.mobile-drawer {
+.laci-ponsel {
   position: fixed;
   top: 0;
   right: -300px; /* Sembunyi di kanan luar layar */
@@ -177,11 +177,11 @@
   flex-direction: column;
 }
 
-.mobile-drawer.active {
+.laci-ponsel.aktif {
   right: 0; /* Muncuk bergeser ke dalam layar */
 }
 
-.mobile-overlay.active {
+.tirai-ponsel.aktif {
   display: block;
 }
 
@@ -193,7 +193,7 @@
   align-items: center;
 }
 
-.close-drawer {
+.tutup-laci {
   background: none;
   border: none;
   font-size: 2rem;
@@ -216,13 +216,13 @@
   letter-spacing: 1px;
 }
 
-.mobile-nav {
+.navigasi-ponsel {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-.mobile-link {
+.tautan-ponsel {
   text-decoration: none;
   color: #334155;
   font-weight: 600;
@@ -232,7 +232,7 @@
   transition: all 0.2s;
 }
 
-.mobile-link:hover, .mobile-link.active {
+.tautan-ponsel:hover, .tautan-ponsel.aktif {
   background-color: #eef2ff;
   color: #6366f1;
 }
@@ -243,13 +243,13 @@
   margin: 8px 0;
 }
 
-.mobile-auth {
+.tombol-akun-ponsel {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-.mobile-auth .btn {
+.tombol-akun-ponsel .tombol {
   width: 100%;
   text-align: center;
 }
@@ -260,7 +260,7 @@
     display: none !important;
   }
 
-  .menu-toggle {
+  .tombol-menu {
     display: block;
   }
 }

@@ -4,13 +4,13 @@ document.addEventListener('DOMContentLoaded',()=>{
 	const revealObserver = 'IntersectionObserver' in window ? new IntersectionObserver((entries, observer) => {
 		entries.forEach(entry => {
 			if (!entry.isIntersecting) return;
-			entry.target.classList.add('in-view');
+			entry.target.classList.add('masuk-layar');
 			observer.unobserve(entry.target);
 		});
 	}, { threshold: 0.12 }) : null;
 
-	const headerRight = document.querySelector('.header-right');
-	const authButtons = document.querySelector('.auth-buttons');
+	const headerRight = document.querySelector('.menu-kanan');
+	const authButtons = document.querySelector('.tombol-akun');
 	const storedUser = (()=>{
 		try {
 			const sessionUser = sessionStorage.getItem('loggedInStudent');
@@ -53,17 +53,17 @@ document.addEventListener('DOMContentLoaded',()=>{
 	};
 
 	if (storedUser) {
-		document.querySelectorAll('.auth-buttons').forEach((buttonGroup) => {
-			buttonGroup.classList.add('hidden');
+		document.querySelectorAll('.tombol-akun').forEach((buttonGroup) => {
+			buttonGroup.classList.add('tersembunyi');
 		});
 	}
 
 	if (currentStudent && headerRight && authButtons) {
 		const userStatus = document.createElement('div');
-		userStatus.className = 'user-status';
-		userStatus.innerHTML = `<span class="user-chip">Halo, ${currentStudent.name || 'Siswa'}</span><button class="logout-btn" type="button">Keluar</button>`;
+		userStatus.className = 'status-pengguna';
+		userStatus.innerHTML = `<span class="chip-pengguna">Halo, ${currentStudent.name || 'Siswa'}</span><button class="tombol-keluar" type="button">Keluar</button>`;
 		headerRight.insertBefore(userStatus, authButtons);
-		const logoutBtn = userStatus.querySelector('.logout-btn');
+		const logoutBtn = userStatus.querySelector('.tombol-keluar');
 		logoutBtn.addEventListener('click', () => {
 			clearStudentSession();
 			window.location.reload();
@@ -75,19 +75,19 @@ document.addEventListener('DOMContentLoaded',()=>{
 	const portalKelas = document.getElementById('portal-kelas');
 	const portalSection = document.getElementById('student-portal');
 	if (currentStudent && portalSection) {
-		portalSection.classList.remove('hidden');
+		portalSection.classList.remove('tersembunyi');
 		portalName.textContent = currentStudent.name || 'Siswa';
 		portalNis.textContent = currentStudent.nis || '-';
 		portalKelas.textContent = currentStudent.kelas || 'Belum terdaftar';
 	}
 
 	if (currentStudent) {
-		document.querySelectorAll('.auth-buttons').forEach((buttonGroup) => {
-			buttonGroup.classList.add('hidden');
+		document.querySelectorAll('.tombol-akun').forEach((buttonGroup) => {
+			buttonGroup.classList.add('tersembunyi');
 		});
 	}
 
-	const onLogout = document.querySelector('.logout-btn');
+	const onLogout = document.querySelector('.tombol-keluar');
 	if (onLogout) {
 		onLogout.addEventListener('click', () => {
 			clearStudentSession();
@@ -95,62 +95,60 @@ document.addEventListener('DOMContentLoaded',()=>{
 		});
 	}
 
-	// Intersection Observer for fade-up elements
-	// Mobile nav toggle
-	const navToggle = document.querySelector('.nav-toggle');
-	const navToggleLeft = document.querySelector('.nav-toggle-left');
+	// Tombol navigasi ponsel
+	const navToggle = document.querySelector('.tombol-navigasi');
+	const navToggleLeft = document.querySelector('.tombol-navigasi-kiri');
 	const mainNav = document.getElementById('main-navigation');
-	const navToggleRight = document.querySelector('.nav-toggle-right');
+	const navToggleRight = document.querySelector('.tombol-navigasi-kanan');
 	if(navToggle && mainNav){
 		navToggle.addEventListener('click', ()=>{
 			const expanded = navToggle.getAttribute('aria-expanded') === 'true';
 			navToggle.setAttribute('aria-expanded', String(!expanded));
 			const leftPanel = document.getElementById('left-panel');
-			// Open left-panel (overlay) if present, otherwise mobile-drawer, regardless of width
-			if(leftPanel){ leftPanel.classList.toggle('open'); leftPanel.setAttribute('aria-hidden', String(expanded)); return; }
+			// Buka left-panel (overlay) jika ada, kalau tidak pakai mobile-drawer, di segala lebar layar
+			if(leftPanel){ leftPanel.classList.toggle('terbuka'); leftPanel.setAttribute('aria-hidden', String(expanded)); return; }
 			const mobileDrawer = document.getElementById('mobile-drawer');
-			if(mobileDrawer){ mobileDrawer.classList.toggle('active'); const mobileOverlay = document.getElementById('mobile-overlay'); if(mobileOverlay) mobileOverlay.classList.toggle('active'); return; }
+			if(mobileDrawer){ mobileDrawer.classList.toggle('aktif'); const mobileOverlay = document.getElementById('mobile-overlay'); if(mobileOverlay) mobileOverlay.classList.toggle('aktif'); return; }
 			mainNav.style.display = expanded ? '' : 'flex';
 		});
 	}
 
-	// wire left hamburger to open mobile panel/drawer directly
+	// Sambungkan hamburger kiri agar langsung membuka panel/drawer ponsel
 	if(navToggleLeft){
 		navToggleLeft.addEventListener('click', (event)=>{
 			event.stopPropagation();
 			const leftPanel = document.getElementById('left-panel');
-			if(leftPanel){ leftPanel.classList.toggle('open'); leftPanel.setAttribute('aria-hidden', String(!leftPanel.classList.contains('open'))); return; }
+			if(leftPanel){ leftPanel.classList.toggle('terbuka'); leftPanel.setAttribute('aria-hidden', String(!leftPanel.classList.contains('terbuka'))); return; }
 			const mobileDrawer = document.getElementById('mobile-drawer');
 			const mobileOverlay = document.getElementById('mobile-overlay');
-			if(mobileDrawer){ const active = mobileDrawer.classList.toggle('active'); if(mobileOverlay) mobileOverlay.classList.toggle('active'); return; }
-			// fallback: toggle main nav
+			if(mobileDrawer){ const active = mobileDrawer.classList.toggle('aktif'); if(mobileOverlay) mobileOverlay.classList.toggle('aktif'); return; }
+			// cadangan: buka/tutup navigasi utama
 			if(mainNav){ const isShown = mainNav.style.display === 'flex'; mainNav.style.display = isShown ? '' : 'flex'; }
 		});
 	}
 
-	// no temporary hamburger handlers remain
 	if(navToggleRight){
 		const leftPanel = document.getElementById('left-panel');
 		navToggleRight.addEventListener('click', (e)=>{
 			const expanded = navToggleRight.getAttribute('aria-expanded') === 'true';
 			navToggleRight.setAttribute('aria-expanded', String(!expanded));
 			if(navToggle) navToggle.setAttribute('aria-expanded', String(!expanded));
-			// If a left-panel exists and we're on a small screen, open that overlay.
+			// Jika ada left-panel dan layar kecil, buka overlay itu.
 			if(leftPanel && window.innerWidth <= 720){
-				leftPanel.classList.toggle('open');
+				leftPanel.classList.toggle('terbuka');
 				leftPanel.setAttribute('aria-hidden', String(expanded));
 				return;
 			}
-			// Otherwise toggle the main navigation (desktop fallback)
+			// Kalau tidak, buka navigasi utama (cadangan desktop)
 			if(mainNav){ mainNav.style.display = expanded ? '' : 'flex'; }
 		});
 	}
 
 	// Scrollspy: hanya aktif untuk navigasi anchor dalam satu halaman (mis. <a href="#section">)
-	// Link antar-halaman (index.html, pembina.html, dst.) memakai class "active" statis di HTML.
-	const anchorLinks = Array.from(document.querySelectorAll('.main-nav .nav-link[href^="#"]'));
+	// Link antar-halaman (index.html, pembina.html, dst.) memakai class "aktif" statis di HTML.
+	const anchorLinks = Array.from(document.querySelectorAll('.navigasi-utama .tautan-navigasi[href^="#"]'));
 	const sections = anchorLinks.map(l => document.getElementById(l.getAttribute('href').slice(1))).filter(Boolean);
-	const navLinks = document.querySelectorAll('.main-nav .nav-link');
+	const navLinks = document.querySelectorAll('.navigasi-utama .tautan-navigasi');
 
 	if (anchorLinks.length && sections.length) {
 		function updateActiveLink(){
@@ -164,110 +162,112 @@ document.addEventListener('DOMContentLoaded',()=>{
 				}
 			});
 			if(!found){
-				anchorLinks.forEach(l=>l.classList.remove('active'));
+				anchorLinks.forEach(l=>l.classList.remove('aktif'));
 			}
 		}
 		window.addEventListener('scroll', updateActiveLink, {passive:true});
 		updateActiveLink();
 	}
 
-	// Auto-close mobile nav after clicking a link
-	const mainNavLinks = document.querySelectorAll('#main-navigation .nav-link');
+	// Tutup navigasi ponsel otomatis setelah link diklik
+	const mainNavLinks = document.querySelectorAll('#main-navigation .tautan-navigasi');
 	mainNavLinks.forEach(l=>{
 		l.addEventListener('click', ()=>{
 			if(window.innerWidth <= 720 && mainNav){ mainNav.style.display = ''; navToggle.setAttribute('aria-expanded','false'); }
 		});
 	});
 
-	// Also ensure right toggle reset
+	// Pastikan tombol kanan juga direset
 	mainNavLinks.forEach(l=>{
 		l.addEventListener('click', ()=>{
 			if(window.innerWidth <= 720 && mainNav){ if(navToggleRight) navToggleRight.setAttribute('aria-expanded','false'); }
 		});
 	});
 
-	// Close left panel when clicking links inside it or clicking outside
+	// Tutup left panel saat link di dalamnya diklik atau klik di luar
 	const _leftPanel = document.getElementById('left-panel');
 	if(_leftPanel){
 		_leftPanel.addEventListener('click', (ev)=>{
 			const target = ev.target;
-			if(target.tagName === 'A' || target.classList.contains('close-btn')){
-				_leftPanel.classList.remove('open');
+			if(target.tagName === 'A' || target.classList.contains('tombol-tutup')){
+				_leftPanel.classList.remove('terbuka');
 				if(navToggleLeft) navToggleLeft.setAttribute('aria-expanded', 'false');
 				if(navToggleRight) navToggleRight.setAttribute('aria-expanded','false');
 			}
 		});
 		document.addEventListener('click', (ev)=>{
-			if(!_leftPanel.classList.contains('open')) return;
+			if(!_leftPanel.classList.contains('terbuka')) return;
 			const clickedToggle = navToggleLeft && (ev.target === navToggleLeft || navToggleLeft.contains(ev.target));
 			const clickedAltToggle = navToggleRight && (ev.target === navToggleRight || navToggleRight.contains(ev.target));
 			if(clickedToggle || clickedAltToggle) return;
 			const inside = _leftPanel.contains(ev.target);
 			if(!inside){
-				_leftPanel.classList.remove('open');
+				_leftPanel.classList.remove('terbuka');
 				if(navToggleLeft) navToggleLeft.setAttribute('aria-expanded', 'false');
 				if(navToggleRight) navToggleRight.setAttribute('aria-expanded', 'false');
 			}
 		});
 	}
 
-	document.querySelectorAll('.nav-dropdown-toggle').forEach((toggleButton) => {
+	document.querySelectorAll('.tombol-menu-turun').forEach((toggleButton) => {
 		toggleButton.addEventListener('click', (event) => {
 			event.stopPropagation();
 			const dropdown = toggleButton.parentElement;
-			const expanded = dropdown.classList.toggle('is-open');
+			const expanded = dropdown.classList.toggle('terbuka');
 			toggleButton.setAttribute('aria-expanded', String(expanded));
 		});
 	});
 
-	// Mobile drawer (jadwal.html uses a different drawer system)
+	// Drawer ponsel (jadwal.html memakai sistem drawer berbeda)
 	const mobileDrawer = document.getElementById('mobile-drawer');
 	const mobileOverlay = document.getElementById('mobile-overlay');
-	const menuToggle = document.getElementById('menu-toggle') || document.querySelector('.menu-toggle');
+	const menuToggle = document.getElementById('menu-toggle') || document.querySelector('.tombol-menu');
 	const closeDrawerBtn = document.getElementById('close-drawer');
 	if(menuToggle && mobileDrawer){
-		const openDrawer = ()=>{ mobileDrawer.classList.add('active'); if(mobileOverlay) mobileOverlay.classList.add('active'); if(navToggleRight) navToggleRight.setAttribute('aria-expanded','true'); };
-		const closeDrawer = ()=>{ mobileDrawer.classList.remove('active'); if(mobileOverlay) mobileOverlay.classList.remove('active'); if(navToggleRight) navToggleRight.setAttribute('aria-expanded','false'); };
-		menuToggle.addEventListener('click', ()=>{ if(mobileDrawer.classList.contains('active')) closeDrawer(); else openDrawer(); });
+		const openDrawer = ()=>{ mobileDrawer.classList.add('aktif'); if(mobileOverlay) mobileOverlay.classList.add('aktif'); if(navToggleRight) navToggleRight.setAttribute('aria-expanded','true'); };
+		const closeDrawer = ()=>{ mobileDrawer.classList.remove('aktif'); if(mobileOverlay) mobileOverlay.classList.remove('aktif'); if(navToggleRight) navToggleRight.setAttribute('aria-expanded','false'); };
+		menuToggle.addEventListener('click', ()=>{ if(mobileDrawer.classList.contains('aktif')) closeDrawer(); else openDrawer(); });
 		if(closeDrawerBtn) closeDrawerBtn.addEventListener('click', closeDrawer);
 		if(mobileOverlay) mobileOverlay.addEventListener('click', closeDrawer);
-		// close when clicking links in drawer
-		mobileDrawer.addEventListener('click', (ev)=>{ if(ev.target.tagName === 'A' || ev.target.classList.contains('mobile-link')) closeDrawer(); });
-		// also let the right-side hamburger open this drawer if present
+		// tutup saat link di dalam drawer diklik
+		mobileDrawer.addEventListener('click', (ev)=>{ if(ev.target.tagName === 'A' || ev.target.classList.contains('tautan-ponsel')) closeDrawer(); });
+		// hamburger sisi kanan juga bisa membuka drawer ini jika ada
 		if(navToggleRight){
 			navToggleRight.addEventListener('click', ()=>{
-				if(mobileDrawer.classList.contains('active')) closeDrawer(); else openDrawer();
+				if(mobileDrawer.classList.contains('aktif')) closeDrawer(); else openDrawer();
 			});
 		}
 	}
 
-	// Parallax effect for hero background blobs
-	const heroBg = document.querySelector('.hero-bg');
+	// Efek parallax untuk blob latar sorotan
+	const heroBg = document.querySelector('.sorotan-latar');
 	if(heroBg && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
 		window.addEventListener('scroll', ()=>{
 			const sc = window.scrollY;
-			// subtle translate for depth
+			// geser halus untuk kesan kedalaman
 			heroBg.style.transform = `translateY(${sc * -0.05}px)`;
 		}, {passive:true});
 	}
-	const observer = new IntersectionObserver((entries)=>{
-		entries.forEach(entry=>{
-			if(entry.isIntersecting){
-				entry.target.classList.add('in-view');
-				observer.unobserve(entry.target);
-			}
-		});
-	},{threshold:0.12});
+	if('IntersectionObserver' in window){
+		const observer = new IntersectionObserver((entries)=>{
+			entries.forEach(entry=>{
+				if(entry.isIntersecting){
+					entry.target.classList.add('masuk-layar');
+					observer.unobserve(entry.target);
+				}
+			});
+		},{threshold:0.12});
 
-	document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
+		document.querySelectorAll('.muncul-halus').forEach(el=>observer.observe(el));
+	}
 
-	// Hero slider (fade) - beranda
+	// Slider sorotan (fade) - beranda
 	(function(){
-		const slides = document.querySelectorAll('.hero-slide');
-		const dots = document.querySelectorAll('.hero-dots button');
-		const prevBtn = document.querySelector('.hero-arrow-left');
-		const nextBtn = document.querySelector('.hero-arrow-right');
-		const hero = document.querySelector('.hero');
+		const slides = document.querySelectorAll('.sorotan-slide');
+		const dots = document.querySelectorAll('.sorotan-titik button');
+		const prevBtn = document.querySelector('.sorotan-panah-kiri');
+		const nextBtn = document.querySelector('.sorotan-panah-kanan');
+		const hero = document.querySelector('.sorotan');
 		if(!slides.length) return;
 
 		let current = 0;
@@ -277,8 +277,8 @@ document.addEventListener('DOMContentLoaded',()=>{
 
 		function goTo(index){
 			current = (index + slides.length) % slides.length;
-			slides.forEach((slide, i) => slide.classList.toggle('active', i === current));
-			dots.forEach((dot, i) => dot.classList.toggle('active', i === current));
+			slides.forEach((slide, i) => slide.classList.toggle('aktif', i === current));
+			dots.forEach((dot, i) => dot.classList.toggle('aktif', i === current));
 		}
 		function nextSlide(){ goTo(current + 1); }
 		function prevSlide(){ goTo(current - 1); }
@@ -302,7 +302,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 	})();
 });
 
-// Simple client-side management: add entries and persist to localStorage
+// Pengelolaan sederhana di sisi klien: tambah entri dan simpan ke localStorage
 const storage = {
 	pembina: 'ex_pembina',
 	prestasi: 'ex_prestasi',
@@ -313,27 +313,27 @@ function loadJSON(key){try{return JSON.parse(localStorage.getItem(key))||[]}catc
 function saveJSON(key,data){localStorage.setItem(key,JSON.stringify(data))}
 
 function createPembinaNode(item){
-	const div=document.createElement('div');div.className='card entry-item fade-up';
-	div.innerHTML=`<h4>Nama: ${escapeHtml(item.name)}</h4><p>Ekskul: ${escapeHtml(item.ekskul)}</p><p>Jadwal Latihan: ${escapeHtml(item.jadwal||'—')}</p><p>${escapeHtml(item.bio||'')}</p><div class="entry-actions"><button class="btn btn-outline small-action remove-pb">Hapus</button></div>`;
+	const div=document.createElement('div');div.className = 'kartu entri muncul-halus';
+	div.innerHTML=`<h4>Nama: ${escapeHtml(item.name)}</h4><p>Ekskul: ${escapeHtml(item.ekskul)}</p><p>Jadwal Latihan: ${escapeHtml(item.jadwal||'—')}</p><p>${escapeHtml(item.bio||'')}</p><div class="aksi-entri"><button class="tombol tombol-garis aksi-kecil hapus-pb">Hapus</button></div>`;
 	return div;
 }
 
 function createPrestasiNode(item){
-	const art=document.createElement('article');art.className='achievement entry-item fade-up';
-	art.innerHTML=`<h4>${escapeHtml(item.title)} ${item.year?`(${escapeHtml(item.year)})`:''}</h4><p>${escapeHtml(item.desc||'')}</p><div class="entry-actions"><button class="btn btn-outline small-action remove-ps">Hapus</button></div>`;
+	const art=document.createElement('article');art.className = 'prestasi entri muncul-halus';
+	art.innerHTML=`<h4>${escapeHtml(item.title)} ${item.year?`(${escapeHtml(item.year)})`:''}</h4><p>${escapeHtml(item.desc||'')}</p><div class="aksi-entri"><button class="tombol tombol-garis aksi-kecil hapus-ps">Hapus</button></div>`;
 	return art;
 }
 
 function createJadwalRow(item){
 	const tr=document.createElement('tr');
-	tr.innerHTML = `<td><span class="badge-day">${escapeHtml(item.hari)}</span></td><td class="ekskul-name">${escapeHtml(item.ekskul)}</td><td class="time-text">${escapeHtml(item.waktu)} <div style="float:right"><button class="btn btn-outline small-action remove-jd">Hapus</button></div></td><td>${escapeHtml(item.lokasi||'')}</td>`;
+	tr.innerHTML = `<td><span class="lencana-hari">${escapeHtml(item.hari)}</span></td><td class="nama-ekskul">${escapeHtml(item.ekskul)}</td><td class="teks-waktu">${escapeHtml(item.waktu)} <div style="float:right"><button class="tombol tombol-garis aksi-kecil hapus-jd">Hapus</button></div></td><td>${escapeHtml(item.lokasi||'')}</td>`;
 	return tr;
 }
 
 function escapeHtml(s){return String(s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":"&#39;"}[c]})}
 
 document.addEventListener('DOMContentLoaded',()=>{
-	// Toggle form buttons
+	// Sembunyikan/tampilkan form lewat tombol
 	const toggle = (btnId, formId, cancelId)=>{
 		const btn=document.getElementById(btnId), form=document.getElementById(formId), cancel=document.getElementById(cancelId);
 		if(!btn||!form) return; btn.addEventListener('click',()=>{form.style.display=form.style.display==='none'?'block':'none'});
@@ -343,12 +343,12 @@ document.addEventListener('DOMContentLoaded',()=>{
 	toggle('toggle-prestasi-form','prestasi-form','cancel-ps');
 	toggle('toggle-jadwal-form','jadwal-form','cancel-jd');
 
-	// Load and render
+	// Muat dan tampilkan data
 	const pbList=document.getElementById('pembina-list');
 	const psList=document.getElementById('prestasi-list');
 	const jdTable=document.getElementById('jadwal-list');
 
-		// Seed default pembina entries if none exist
+		// Isi data pembina bawaan jika belum ada
 		const defaultPembina = [
 			{name: 'Budi Santoso', ekskul: 'Klub Robotika', jadwal: 'Selasa & Kamis, 15:30 - 17:30', bio: 'Budi adalah lulusan Teknik Elektro yang telah memimpin tim robotika sekolah selama 5 tahun dengan fokus pada desain mekanik dan pemrograman mikrokontroler.'},
 			{name: 'Siti Maharani', ekskul: 'Paduan Suara', jadwal: 'Senin & Rabu, 16:00 - 17:30', bio: 'Siti adalah musisi berpengalaman yang pernah menjadi vokalis paduan suara universitas dan mengajar teknik vokal dan harmoni.'},
@@ -360,7 +360,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 		}
 		const pbs = loadJSON(storage.pembina); pbs.forEach(i=>{ if(pbList) pbList.appendChild(createPembinaNode(i)); });
 
-		// Ekskul list stored separately so index.html can render dynamically
+		// Daftar ekskul disimpan terpisah agar index.html bisa me-render dinamis
 		const ekskulKey = 'ex_ekskul';
 		const defaultEkskul = [
 			{ name: 'Futsal', desc: 'Latihan teknik, taktik, dan kebugaran untuk pertandingan antar sekolah.', coach: 'Budi Santoso', room: 'SMK Taruna Bangsa' },
@@ -376,7 +376,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 
 		const ekskuls = loadJSON(ekskulKey);
 		const ekskulList = document.getElementById('ekskul-list');
-		const ekskulGrid = document.querySelector('.ekskul-grid');
+		const ekskulGrid = document.querySelector('.kisi-ekskul');
 		const coachMap = {
 			Futsal: 'Budi Santoso', Basket: 'Andi Rahman', Volley: 'Siti Maharani',
 			Paskibra: 'Pembina Paskibra', 'Pencak Silat': 'Pembina Pencak Silat',
@@ -391,8 +391,8 @@ document.addEventListener('DOMContentLoaded',()=>{
 			const target = ekskulGrid || ekskulList;
 			target.innerHTML = '';
 			ekskuls.forEach(e=>{
-				const card = document.createElement('div'); card.className='ekskul-card fade-up';
-				card.innerHTML = `<div class="ekskul-body"><h3><a class="ekskul-name" style="--ekskul-color:${colorMap[e.name] || '#0f766e'}" href="ekskul-detail.html?name=${encodeURIComponent(e.name)}">${escapeHtml(e.name)}</a></h3><p>${escapeHtml(e.desc||'')}</p><p class="ekskul-coach">Pembina: <strong>${escapeHtml(e.coach || coachMap[e.name] || 'Pembina ekskul')}</strong></p><p class="ekskul-room">Tempat latihan: <strong>SMK Taruna Bangsa</strong></p><p style="margin-top:8px"><a href="ekskul-detail.html?name=${encodeURIComponent(e.name)}" class="card-link">Lihat Profil &rarr;</a></p></div>`;
+				const card = document.createElement('div'); card.className = 'kartu-ekskul muncul-halus';
+				card.innerHTML = `<div class="isi-ekskul"><h3><a class="nama-ekskul" style="--ekskul-color:${colorMap[e.name] || '#0f766e'}" href="ekskul-detail.html?name=${encodeURIComponent(e.name)}">${escapeHtml(e.name)}</a></h3><p>${escapeHtml(e.desc||'')}</p><p class="pembina-ekskul">Pembina: <strong>${escapeHtml(e.coach || coachMap[e.name] || 'Pembina ekskul')}</strong></p><p class="tempat-ekskul">Tempat latihan: <strong>SMK Taruna Bangsa</strong></p><p style="margin-top:8px"><a href="ekskul-detail.html?name=${encodeURIComponent(e.name)}" class="kartu-tautan">Lihat Profil &rarr;</a></p></div>`;
 				target.appendChild(card);
 			});
 			observeNew();
@@ -402,7 +402,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 		const pss = loadJSON(storage.prestasi); if(psList) pss.forEach(i=>psList.appendChild(createPrestasiNode(i)));
 		const jds = loadJSON(storage.jadwal); if(jdTable) jds.forEach(i=>jdTable.appendChild(createJadwalRow(i)));
 
-		// Admin panel bindings (if present on this page)
+		// Kaitkan panel admin (jika ada di halaman ini)
 		const adminPanel = document.getElementById('admin-panel');
 		if(adminPanel){
 			const ekskulSelect = document.getElementById('jadwal-ekskul');
@@ -425,7 +425,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 			document.getElementById('reset-data').addEventListener('click', ()=>{ if(!confirm('Reset semua data demo?')) return; localStorage.clear(); location.reload(); });
 		}
 
-	// Submit handlers
+	// Penanganan submit form
 	const pbForm=document.getElementById('pembina-form');
 	if(pbForm){pbForm.addEventListener('submit',e=>{
 		e.preventDefault();const item={name:pbForm['name'].value,ekskul:pbForm['ekskul'].value,jadwal:pbForm['jadwal'].value,bio:pbForm['bio'].value};
@@ -437,28 +437,28 @@ document.addEventListener('DOMContentLoaded',()=>{
 	const jdForm=document.getElementById('jadwal-form');
 	if(jdForm){jdForm.addEventListener('submit',e=>{e.preventDefault();const item={hari:jdForm['hari'].value,ekskul:jdForm['ekskul'].value,waktu:jdForm['waktu'].value};jds.push(item);saveJSON(storage.jadwal,jds);jdTable.appendChild(createJadwalRow(item));jdForm.reset();jdForm.style.display='none';});}
 
-	// Delegated remove handlers
+	// Penanganan hapus lewat event delegation
 	document.body.addEventListener('click',e=>{
-		if(e.target.classList.contains('remove-pb')){
-			const node=e.target.closest('.entry-item');const idx=Array.from(pbList.children).indexOf(node); if(idx>-1){pbs.splice(idx,1);saveJSON(storage.pembina,pbs);node.remove();}
+		if(e.target.classList.contains('hapus-pb')){
+			const node=e.target.closest('.entri');const idx=Array.from(pbList.children).indexOf(node); if(idx>-1){pbs.splice(idx,1);saveJSON(storage.pembina,pbs);node.remove();}
 		}
-		if(e.target.classList.contains('remove-ps')){
-			const node=e.target.closest('.entry-item');const idx=Array.from(psList.children).indexOf(node); if(idx>-1){pss.splice(idx,1);saveJSON(storage.prestasi,pss);node.remove();}
+		if(e.target.classList.contains('hapus-ps')){
+			const node=e.target.closest('.entri');const idx=Array.from(psList.children).indexOf(node); if(idx>-1){pss.splice(idx,1);saveJSON(storage.prestasi,pss);node.remove();}
 		}
-		if(e.target.classList.contains('remove-jd')){
-			const tr=e.target.closest('tr');const idx=Array.from(jdTable.querySelectorAll('tr')).indexOf(tr)-0; // includes header? safer:
-			// find index among body rows
+		if(e.target.classList.contains('hapus-jd')){
+			const tr=e.target.closest('tr');
+			// cari indeks di antara baris body
 			const rows=Array.from(jdTable.querySelectorAll('tbody tr'));
 			const rowIndex=rows.indexOf(tr);
 			if(rowIndex>-1){jds.splice(rowIndex,1);saveJSON(storage.jadwal,jds);tr.remove();}
 		}
 	});
 
-	// Observe newly added fade-up elements
+	// Awasi elemen fade-up yang baru ditambahkan
 	function observeNew(){
-		document.querySelectorAll('.fade-up:not(.in-view)').forEach(el=>{
+		document.querySelectorAll('.muncul-halus:not(.masuk-layar)').forEach(el=>{
 			if (revealObserver) revealObserver.observe(el);
-			else el.classList.add('in-view');
+			else el.classList.add('masuk-layar');
 		});
 	}
 	observeNew();

@@ -12,23 +12,23 @@
       <div class="login-brand">
         <div class="brand-badge">Admin</div>
         <h1>Panel Admin</h1>
-        <p class="muted">Akses halaman kontrol - masukkan kredensial Anda</p>
+        <p class="redup">Akses halaman kontrol - masukkan kredensial Anda</p>
       </div>
 
       <form id="admin-login" class="login-form" onsubmit="return handleSubmitAdmin(event)">
-        <div class="form-group">
-          <input id="username" name="username" required class="form-input" autocomplete="username" />
-          <label for="username" class="form-label">Username</label>
+        <div class="kelompok-formulir">
+          <input id="username" name="username" required class="input-formulir" autocomplete="username" />
+          <label for="username" class="label-formulir">Username</label>
         </div>
 
-        <div class="form-group">
-          <input id="admin-password" name="password" type="password" required class="form-input" autocomplete="current-password" />
-          <label for="admin-password" class="form-label">Password</label>
+        <div class="kelompok-formulir">
+          <input id="admin-password" name="password" type="password" required class="input-formulir" autocomplete="current-password" />
+          <label for="admin-password" class="label-formulir">Password</label>
         </div>
 
-        <div class="form-actions">
+        <div class="aksi-formulir">
           <label class="checkbox"><input type="checkbox" id="show-admin-pw"> Tampilkan password</label>
-          <button class="btn btn-primary" type="submit">Masuk</button>
+          <button class="tombol tombol-utama" type="submit">Masuk</button>
         </div>
 
         <p class="foot"><a href="index.html">Kembali ke Beranda</a></p>
@@ -68,13 +68,13 @@
       pw.type = this.checked ? 'text' : 'password';
     });
 
-    // Floating label behavior
-    document.querySelectorAll('.form-input').forEach(input => {
-      input.addEventListener('focus', () => input.parentElement.classList.add('focus'));
+    // Perilaku label melayang
+    document.querySelectorAll('.input-formulir').forEach(input => {
+      input.addEventListener('focus', () => input.parentElement.classList.add('fokus'));
       input.addEventListener('blur', () => {
-        if(!input.value) input.parentElement.classList.remove('focus');
+        if(!input.value) input.parentElement.classList.remove('fokus');
       });
-      if(input.value) input.parentElement.classList.add('focus');
+      if(input.value) input.parentElement.classList.add('fokus');
     });
   </script>
 </body>

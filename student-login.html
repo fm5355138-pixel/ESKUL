@@ -19,28 +19,28 @@
             <h1>TARUNA BANGSA</h1>
           </div>
         </div>
-        <p class="muted">Disiplin | Terampil | Berakhlak Mulia</p>
+        <p class="redup">Disiplin | Terampil | Berakhlak Mulia</p>
       </div>
 
       <form id="student-login" class="login-form">
         <div id="error-box" class="error-box" role="alert" style="display:none"></div>
 
-        <div class="form-group">
-          <input id="nis" name="nis" required class="form-input" autocomplete="username" />
-          <label for="nis" class="form-label">NIS</label>
+        <div class="kelompok-formulir">
+          <input id="nis" name="nis" required class="input-formulir" autocomplete="username" />
+          <label for="nis" class="label-formulir">NIS</label>
         </div>
 
-        <div class="form-group">
-          <input id="student-password" name="password" type="password" required class="form-input" autocomplete="current-password" />
-          <label for="student-password" class="form-label">Password</label>
+        <div class="kelompok-formulir">
+          <input id="student-password" name="password" type="password" required class="input-formulir" autocomplete="current-password" />
+          <label for="student-password" class="label-formulir">Password</label>
         </div>
 
-        <div class="form-actions">
+        <div class="aksi-formulir">
           <label class="checkbox"><input type="checkbox" id="show-student-pw"> Tampilkan password</label>
           <label class="remember"><input type="checkbox" id="remember-student"> Ingat saya</label>
         </div>
 
-        <button class="btn btn-primary full-width" id="student-submit" type="submit">Masuk ke Portal</button>
+        <button class="tombol tombol-utama full-width" id="student-submit" type="submit">Masuk ke Portal</button>
 
         <div class="login-links">
           <a href="index.html" class="link-btn secondary-link">← Kembali ke Beranda</a>
@@ -50,7 +50,7 @@
   </main>
 
   <script>
-    // Demo student database (stored in localStorage under 'students')
+    // Database siswa demo (disimpan di localStorage dengan key 'students')
     (function(){
       try{
         if(!localStorage.getItem('students')){
@@ -90,12 +90,10 @@
         email: user.email || ''
       };
 
-      // success
       const remember = document.getElementById('remember-student').checked;
       if(remember) localStorage.setItem('loggedInStudent', JSON.stringify(userPayload));
       else sessionStorage.setItem('loggedInStudent', JSON.stringify(userPayload));
 
-      // redirect to dashboard
       window.location.href = 'dashboard.html';
     });
 
@@ -103,17 +101,17 @@
       window.location.href = 'dashboard.html';
     }
 
-    // show password toggle
+    // tampilkan/sembunyikan password
     document.getElementById('show-student-pw').addEventListener('change', function(e){
       const pw = document.getElementById('student-password');
       pw.type = this.checked ? 'text' : 'password';
     });
 
-    // Floating label behavior
-    document.querySelectorAll('.form-input').forEach(input => {
-      input.addEventListener('focus', () => input.parentElement.classList.add('focus'));
-      input.addEventListener('blur', () => { if(!input.value) input.parentElement.classList.remove('focus'); });
-      if(input.value) input.parentElement.classList.add('focus');
+    // Perilaku label melayang
+    document.querySelectorAll('.input-formulir').forEach(input => {
+      input.addEventListener('focus', () => input.parentElement.classList.add('fokus'));
+      input.addEventListener('blur', () => { if(!input.value) input.parentElement.classList.remove('fokus'); });
+      if(input.value) input.parentElement.classList.add('fokus');
     });
   </script>
 </body>
